@@ -1,0 +1,46 @@
+@use "../global" as *;
+
+// margin-top:0rem ~ margin-top:100rem
+@for $i from 0 through 20 {
+  .u-mt#{$i} {
+    margin-top:#{$i}rem;
+  }
+}
+// margin-bottom:0rem ~ margin-bottom:20rem
+@for $i from 0 through 20 {
+  .u-mb#{$i} {
+    margin-bottom:#{$i}rem;
+  }
+}
+// margin-left:0rem ~ margin-left:20rem
+@for $i from 0 through 20 {
+  .u-ml#{$i} {
+    margin-left:#{$i}rem;
+  }
+}
+// margin-right:0rem ~ margin-right:20rem
+@for $i from 0 through 20 {
+  .u-mr#{$i} {
+    margin-right:#{$i}rem;
+  }
+}
+
+// margin-top:0em ~ margin-top:20em
+@for $i from 0 through 10 {
+  .u-mt#{$i}em {
+    margin-top:#{$i}em;
+  }
+}
+// margin-bottom:0em ~ margin-bottom:100em
+@for $i from 0 through 10 {
+  .u-mb#{$i}em {
+    margin-bottom:#{$i}em;
+  }
+}
+
+@include sp {
+  .u-spmlr-10vw {
+    margin-left: -10vw;
+    margin-right: -10vw;
+  }
+}

@@ -1,0 +1,107 @@
+@use "../global" as *;
+
+.u-show--sp {
+  @include pc {
+    display: none !important;
+  }
+}
+.u-show--pc {
+  @include sp {
+    display: none !important;
+  }
+}
+.u-hide {
+  display: none;
+}
+
+.u-floatL {
+  float: left;
+}
+.u-floatR {
+  float: right;
+}
+.u-clear {
+  @include clearFix;
+}
+.u-alignL {
+  text-align: left;
+}
+.u-alignR {
+  text-align: right;
+}
+.u-alignC {
+  text-align: center;
+}
+
+.u-triming1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.u-triming2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.u-triming3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.u-bgColor--base {
+  background-color: $color_base;
+}
+.u-bgColor--gray {
+  background-color: $Gray_pale;
+}
+
+.u-noimage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  box-shadow: inset 0 0 4rem rgba(0, 0, 0, 0.1);
+
+  @include pc {
+    min-height: 30rem;
+  }
+
+  img {
+    width: 50% !important;
+    height: auto;
+    opacity: 0.3 !important;
+  }
+}
+
+.u-dummyBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1020px;
+  height: 16rem;
+  background: #eee;
+  font-size: 1.7rem;
+  margin: 0 auto 4rem;
+  @include pc {
+    height: 40rem;
+  }
+}
+
+.u-noticeProduction {
+  background: #eee;
+  padding: 3rem 6rem;
+  margin: -5rem 0 8rem;
+  line-height: 1.5;
+  @include sp {
+    padding: 2rem 2rem;
+    margin: -3rem 0 4rem;
+    font-size: 1.4rem;
+  }
+}

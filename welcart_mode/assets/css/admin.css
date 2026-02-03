@@ -1,0 +1,289 @@
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	usces_itemedit
+/* -------------------------------------------------------------------------- */
+
+.welcart-shop_page_usces_itemedit #sticky-span {
+	display: none !important;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	term.php
+/* -------------------------------------------------------------------------- */
+
+.taxonomy-category #category-img-url,
+.taxonomy-category #category-thumbnail-url,
+.taxonomy-model #model-img-url,
+.taxonomy-brand #brand-img-url {
+	width: calc(100% - 95px);
+}
+
+.taxonomy-category .category-img-preview,
+.taxonomy-category .category-thumbnail-preview,
+.taxonomy-model .model-img-preview,
+.taxonomy-brand #brand-img-preview {
+	max-width: 200px;
+	margin-top: 20px;
+}
+
+.taxonomy-category .category-img-preview img,
+.taxonomy-category .category-thumbnail-preview img,
+.taxonomy-model .model-img-preview img,
+.taxonomy-brand #brand-img-preview img {
+	max-width: 100%;
+	height: auto;
+}
+
+.taxonomy-model label {
+	display: block;
+	margin: 6px 0;
+}
+
+.taxonomy-features_cat .term-parent-wrap,
+.taxonomy-model .term-parent-wrap,
+.taxonomy-brand .term-parent-wrap {
+	display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	post.php
+/* -------------------------------------------------------------------------- */
+
+.post-type-attachment .compat-attachment-fields,
+.post-type-attachment .compat-attachment-fields tbody,
+.post-type-attachment .compat-attachment-fields tr,
+.post-type-attachment .compat-attachment-fields th,
+.post-type-attachment .compat-attachment-fields td {
+	display: block;
+}
+
+.post-type-attachment .compat-attachment-fields td input {
+	width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	theme-customizer.php
+/* -------------------------------------------------------------------------- */
+
+.customize-control-checkbox-multiple {
+	margin-left: 24px;
+}
+
+
+/*	ヘッダー画像
+/* -------------------------------------------------------------------------- */
+
+#customize-control-header_image .customize-control-description,
+.attachments-browser .instructions {
+	display: none;
+}
+
+
+/*	メニュー
+/* -------------------------------------------------------------------------- */
+
+#accordion-section-menu_locations::after {
+	display: block;
+	margin: 15px 0 4px;
+	padding: 0 12px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.75;
+}
+
+#accordion-section-global_menu_custom::before {
+	display: block;
+	margin: 0 0 5px;
+	padding: 0 12px;
+}
+
+/*	テーマオプション
+/* -------------------------------------------------------------------------- */
+
+.customize-control-number input[type="number"] {
+	width: 55px;
+}
+
+#customize-control-ch_slide_speed input[type="number"],
+#customize-control-ch_animation_speed input[type="number"] {
+	width: auto;
+}
+
+#customize-control-control_display_features::before,
+#customize-control-control_display_coordinate::before,
+#customize-control-control_display_brand::before,
+#customize-control-control_display_posts::before,
+#customize-control-display_widget_slide::before,
+#customize-control-primary_bg_color::before,
+#customize-control-header_bg_color::before,
+#customize-control-footer_bg_color::before,
+#customize-control-tabs_current_text_color::after {
+	display: block;
+	margin: 0 -12px 12px;
+	padding: 12px 10px;
+	background: #0085ba;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+#customize-control-copyright_text_color::after,
+#customize-control-tabs_current_text_color::after {
+	display: block;
+	margin: 12px 6px 12px -32px;
+	padding: 12px 10px;
+	background: #0085ba;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+#customize-control-header_bg_color::before,
+#customize-control-footer_bg_color::before,
+#customize-control-copyright_text_color::after,
+#customize-control-tabs_current_text_color::after {
+	margin-top: 24px;
+}
+
+#customize-control-copyright_text_color::after,
+#customize-control-tabs_current_text_color::after {
+	margin-bottom: 0;
+}
+
+/* ---- layout-label ---- */
+#customize-control-control_features_layout .customize-control-title,
+#customize-control-control_posts_layout .customize-control-title {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+#customize-control-control_fixed_header::before,
+#customize-control-primary_border_color::after,
+#customize-control-primary_button_bg_color::before,
+#customize-control-primary_sub_button1_bg_color::before,
+#customize-control-primary_sub_button2_bg_color::before,
+#customize-control-header_sub_bg_color::before,
+#customize-control-primary_th_bg_color::before,
+#customize-control-header_button_border_color::before,
+#customize-control-footer_icon_bg_color::before,
+#customize-control-copyright_bg_color::before,
+#customize-control-cart_button_bg_color::before,
+#customize-control-opt_new_color::before,
+#customize-control-opt_sale_color::after,
+#customize-control-tabs_current_bg_color::before,
+#customize-control-calendar_holiday_bg_color::before,
+#customize-control-entry_bg_color::before,
+#customize-control-widget_cart_header::before,
+#customize-control-cart_quantity_background_color::before {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.75;
+}
+
+#customize-control-control_menu_display_method .customize-inside-control-row::after {
+	display: block;
+	margin-top: 4px;
+	font-size: 12px;
+}
+
+#customize-control-coordinate_column::after {
+	display: block;
+	margin-top: 8px;
+	font-size: 12px;
+}
+
+#customize-control-primary_button_bg_color::before,
+#customize-control-primary_sub_button1_bg_color::before,
+#customize-control-primary_sub_button2_bg_color::before,
+#customize-control-header_sub_bg_color::before,
+#customize-control-primary_th_bg_color::before,
+#customize-control-header_button_border_color::before,
+#customize-control-footer_icon_bg_color::before,
+#customize-control-copyright_bg_color::before,
+#customize-control-cart_button_bg_color::before,
+#customize-control-opt_new_color::before,
+#customize-control-opt_sale_color::after,
+#customize-control-tabs_current_bg_color::before,
+#customize-control-calendar_holiday_bg_color::before,
+#customize-control-entry_bg_color::before,
+#customize-control-cart_quantity_background_color::before {
+	margin-left: -20px;
+}
+
+#customize-control-primary_border_color::after {
+	margin: 12px -12px 0;
+	padding: 5px 10px;
+	background-color: #888;
+	color: #fff;
+}
+
+#customize-control-opt_sale_color::after {
+	margin: 12px -12px 0;
+	padding: 5px 10px;
+	background-color: #888;
+	color: #fff;
+}
+
+#customize-control-primary_button_bg_color::before,
+#customize-control-primary_sub_button1_bg_color::before,
+#customize-control-primary_sub_button2_bg_color::before,
+#customize-control-header_sub_bg_color::before,
+#customize-control-header_button_border_color::before,
+#customize-control-footer_icon_bg_color::before,
+#customize-control-copyright_bg_color::before,
+#customize-control-cart_button_bg_color::before,
+#customize-control-opt_new_color::before,
+#customize-control-cart_quantity_background_color::before {
+	margin: 0 8px 12px -32px;
+	padding: 5px 10px;
+	background-color: #888;
+	color: #fff;
+}
+
+#customize-control-primary_th_bg_color,
+#customize-control-primary_th_text_color,
+#customize-control-tabs_current_bg_color,
+#customize-control-tabs_current_text_color,
+#customize-control-calendar_holiday_bg_color,
+#customize-control-calendar_holiday_text_color,
+#customize-control-entry_bg_color,
+#customize-control-entry_text_color,
+#customize-control-entry_border_color {
+	margin-bottom: 10px;
+	padding-left: 20px;
+}
+
+#customize-control-primary_button_bg_color::before,
+#customize-control-primary_button_text_color::before,
+#customize-control-primary_sub_button1_bg_color::before,
+#customize-control-primary_sub_button1_text_color::before,
+#customize-control-primary_sub_button2_bg_color::before,
+#customize-control-primary_sub_button2_text_color::before,
+#customize-control-header_sub_bg_color::before,
+#customize-control-header_sub_text_color::before,
+#customize-control-header_button_border_color::before,
+#customize-control-cart_quantity_background_color::before,
+#customize-control-footer_icon_bg_color::before,
+#customize-control-footer_icon_color::before,
+#customize-control-copyright_bg_color::before,
+#customize-control-copyright_text_color::before,
+#customize-control-cart_button_bg_color::before,
+#customize-control-cart_button_text_color::before,
+#customize-control-opt_new_color::before,
+#customize-control-opt_reco_color::before,
+#customize-control-opt_stock_color::before,
+#customize-control-opt_sale_color::before {
+	margin: 0 -12px 12px;
+}
+
+#customize-control-copyright_text_color::after {
+	margin: 24px -12px 12px;
+}

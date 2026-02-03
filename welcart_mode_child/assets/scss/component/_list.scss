@@ -1,0 +1,59 @@
+@use "../global" as *;
+
+.c-ulStyle1 {
+  margin: 1.5em 0 2em;
+  
+  li {
+    position: relative;
+    padding-left: 1.4em;
+    line-height: 1.75;
+
+    &:not(:last-child) {
+      margin-bottom: 0.3em;
+    }
+    
+    &::before {
+      content: "";
+      display: block;  
+      position: absolute;
+      top: 0.8em;
+      left: 0.3em;
+      width: 5px;
+      height: 5px;
+      border-radius: 100%;
+      background: $color_text;
+    }
+  }
+
+  [class*="c-tableStyle"] td & {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.c-olStyle1  {
+  padding-left: 1.3em;
+  margin: 1.5em 0 2em;
+  li {
+    list-style-type: decimal;
+    margin-bottom: 0.3em;
+  }
+}
+
+.c-olStyle--free  {
+  padding-left: 1.6em;
+  margin: 1.5em 0 2em;
+  li {
+    list-style-type: none;
+    margin-bottom: 0.3em;
+    text-indent: -1.6em;
+
+    p {
+      text-indent: 0;
+    }
+  }
+}

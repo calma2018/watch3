@@ -1,0 +1,116 @@
+@use "../global" as *;
+
+.c-text {
+  margin-bottom: 1.875em;
+  line-height: 1.875; 
+}
+
+.c-textLead {
+  @include pc {
+    margin-bottom: 5rem;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 2.3;
+  }
+  @include sp {
+    margin-bottom: 3rem;
+    font-size: 1.6rem;
+    text-align: left;
+    line-height: 2;
+  }
+}
+
+
+.c-textTagline {
+  font-weight: 800;
+  margin-bottom: 0.8em;
+  @include pc {
+    font-size: 5.8rem;
+    line-height: 1.2;
+  }
+  @include sp {
+    font-size: 2.6rem;
+    line-height: 1.4;
+  }
+}
+
+
+.c-textLink {
+  position: relative;
+	margin: 0;
+  padding-right: 0.9em;
+  margin-right: 0.5rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.4em;
+    right: 0;
+    width: 0.5em;
+    height: 0.5em;
+    border-top: 1px solid currentColor;
+    border-right: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  
+  &[target="_blank"] {
+    padding-right: 0;
+    
+    &::after {
+    	content: "";
+      position: relative;
+      top: inherit;
+      bottom: inherit;
+      right: inherit;
+      display: inline-block;
+      vertical-align: super;
+      margin-left: 3px;
+      width: 10px;
+      height: 10px;
+    	background: url(../images/common/ico_blank.svg) no-repeat center center;
+      background-size: contain;
+      border: none;
+      transform: none;
+      transform: translateY(3px);
+    }
+  }
+
+  &[href*=".pdf"] {
+    padding-right: 0;
+    
+    &::after {
+      content: "";
+      position: relative;
+      top: inherit;
+      bottom: inherit;
+      right: inherit;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 3px;
+      width: 25px;
+      height: 25px;
+      background-image: url('../images/common/ico_file_pdf.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      border: none;
+      transform: none;
+    }
+  }
+
+
+  &.u-color--white {
+    color: #fff;
+    &::after {
+      border-color: #fff;
+    }
+  }
+}
+
+
+
+.c-textMarker {
+  font-style: normal;
+  background: rgba(0, 0, 0, 0) linear-gradient(transparent 0%, transparent 65%, $color_sub 65%, $color_sub 100%) repeat scroll 0 0;
+}

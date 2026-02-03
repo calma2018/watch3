@@ -1,0 +1,551 @@
+
+/* -------------------------------------------------------------------------- */
+
+/*	Secondary
+/* -------------------------------------------------------------------------- */
+
+/*  common
+----------------------------------------*/
+
+.secondary:before {
+	background-color: #ddd;
+	display: block;
+	margin: 48px -1em 30px;
+	content: "";
+	width: calc( 100% + 2em );
+	height: 1px;
+}
+.secondary .widget {
+	margin: 0 1em 36px;
+}
+.secondary .widget:last-child {
+	margin-bottom: 0;	
+}
+.secondary .widget_title {
+	margin-bottom: 15px;
+	font-size: 16px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+}
+
+.widget_title img {
+	width: 20px;
+	margin-right: 0.8em;
+}
+
+
+/*  Item List Widget
+----------------------------------------*/
+
+.secondary .widget_mode_item_list .en,
+.secondary .widget_mode_item_list .entryfoot {
+	display: none;
+}
+.secondary .column-grid1 {
+	max-width: none;
+}
+.secondary .column-grid1 .list {
+	margin-bottom: 1em;
+}
+.secondary .column-grid .list:nth-child( n+3 ) {
+	margin-top: 12px;
+}
+.secondary .column-grid .list a {
+	display: flex;
+	flex-wrap: wrap;
+}
+.secondary .column-grid .list .img {
+	margin: 0 10px 0 0;
+	max-width: 60px;
+	width: 100%;
+}
+.secondary .column-grid .list .info {
+	margin: 0;
+	width: calc( 100% - 70px );
+}
+.secondary .column-grid .list .price {
+	font-size: 12px;
+	line-height: 1;
+}
+.secondary .column-grid .list .tax_inc_block {
+	margin-top: 3px;
+}
+
+.secondary .widget_welcart_featured ul,
+.secondary .widget_welcart_featured li a {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+.secondary .widget_welcart_featured li {
+	margin-right: 9px;
+	width: calc( 50% - 4.5px );
+}
+.secondary .widget_welcart_featured li:nth-child( even ) {
+	margin-right: 0;
+}
+.secondary .widget_welcart_featured li:nth-child( n+3 ) {
+	margin-top: 12px;
+}
+.secondary .widget_welcart_featured li .img {
+	margin: 0 10px 0 0;
+	min-width: 60px;
+	max-width: 60px;
+	text-align: center;
+}
+.secondary .widget_welcart_featured li .info {
+	margin: 0;
+	width: calc( 100% - 70px );
+}
+.secondary .widget_welcart_featured li .name {
+	font-size: 11px;
+	font-weight: normal;
+}
+.secondary .widget_welcart_featured li .price {
+	margin-top: 4px;
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	font-size: 12px;
+	line-height: 1;
+}
+.secondary .widget_welcart_featured .tax_inc_block {
+	margin-top: 3px;
+	font-size: 11px;
+}
+.secondary .widget_welcart_featured .tax_inc_block em {
+	margin-right: 3px;
+	font-size: 11px;
+}
+
+.secondary .widget_welcart_bestseller li a {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.secondary .widget_welcart_bestseller li {
+	margin: 0 0 15px;
+	position: relative;
+}
+.secondary .widget_welcart_bestseller li:last-child {
+	margin: 0;
+}
+.widget_welcart_bestseller .rankimg {
+	background-color: #fff;
+	position: absolute;
+	color: #333;
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+}
+.widget_welcart_bestseller .rank1 .rankimg {
+	background-color: #dbb400;
+	color: #fff;
+	border: none;
+}
+.widget_welcart_bestseller .rank2 .rankimg {
+	background-color: #999;
+	color: #fff;
+	border: none;
+}
+.widget_welcart_bestseller .rank3 .rankimg {
+	background-color: #c47222;
+	color: #fff;
+	border: none;
+}
+.secondary .widget_welcart_bestseller .rankimg {
+	top: 6px;
+	left: 6px;
+	font-size: 12px;
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
+}
+.secondary .widget_welcart_bestseller li .img {
+	margin: 0 10px 0 40px;
+	max-width: 56px;
+	width: 56px;
+}
+.secondary .widget_welcart_bestseller li .info {
+	margin: 0;
+	width: calc( 100% - 106px );
+}
+.secondary .widget_welcart_bestseller li .name {
+	font-size: 11px;
+	font-weight: normal;
+}
+.secondary .widget_welcart_bestseller li .price {
+	margin-top: 4px;
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	font-size: 12px;
+	line-height: 1;
+}
+.secondary .widget_welcart_bestseller .tax_inc_block {
+	margin-top: 3px;
+	font-size: 11px;
+}
+.secondary .widget_welcart_bestseller .tax_inc_block em {
+	margin-right: 3px;
+	font-size: 11px;
+}
+
+
+/*  Calendar
+----------------------------------------*/
+
+.secondary .widget_welcart_calendar li {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 11px;
+}
+.secondary .widget_welcart_calendar .this-month,
+.secondary .widget_welcart_calendar .next-month {
+	margin-bottom: 8px;
+	width: calc( 50% - 4.5px );
+}
+.secondary .calendar_wrap,
+.secondary .welcart_blog_calendar #calendar_wrap {
+	margin: 0 auto;
+	width: 75%;
+	font-size: 11px;
+}
+.secondary .widget_welcart_calendar .this-month {
+	margin-right: 9px;
+}
+.secondary .widget_welcart_calendar table,
+.secondary .widget_calendar table,
+.secondary .welcart_blog_calendar table {
+	width: 100%;
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+}
+.secondary .widget_welcart_calendar caption,
+.secondary .widget_calendar table caption,
+.secondary .welcart_blog_calendar table caption {
+	text-align: left;
+	color: #666;
+	font-size: 13px;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+.secondary .widget_welcart_calendar th,
+.secondary .widget_welcart_calendar td,
+.secondary .widget_calendar th,
+.secondary .widget_calendar td,
+.secondary .welcart_blog_calendar th,
+.secondary .welcart_blog_calendar td {
+	text-align: center;
+}
+.secondary .widget_welcart_calendar th,
+.secondary .widget_calendar th,
+.secondary .welcart_blog_calendar th {
+	padding: 0 3px;
+}
+.secondary .widget_welcart_calendar td,
+.secondary .widget_calendar td,
+.secondary .welcart_blog_calendar td {
+	padding: 3px;
+	font-size: 10px;
+}
+.secondary .widget_welcart_calendar td.businessday {
+	position: relative;
+}
+.secondary .widget_welcart_calendar td.businessday:before {
+	background-color: #eee;
+	display: block;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+.secondary .widget_welcart_calendar span.businessday {
+	background-color: #eee;
+	margin-left: 4px;
+	width: 20px;
+	height: 20px;
+}
+.secondary .widget_welcart_calendar td.businesstoday,
+.secondary .widget_calendar td#today,
+.secondary .welcart_blog_calendar td#today {
+	font-weight: 700;
+}
+.secondary .wp-calendar-nav {
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	margin-top: 12px;
+}
+.secondary .widget_calendar tfoot td#prev,
+.secondary .welcart_blog_calendar tfoot td#prev {
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	padding-top: 6px;	
+}
+.secondary .widget_calendar tfoot td#prev,
+.secondary .welcart_blog_calendar tfoot td#prev {
+	text-align: left;
+}
+.secondary .widget_calendar tfoot td#next,
+.secondary .welcart_blog_calendar tfoot td#next {
+	text-align: right;
+}
+.secondary .wp-calendar-nav a,
+.secondary .widget_calendar tfoot td a,
+.secondary .welcart_blog_calendar tfoot td a,
+.secondary .widget_calendar td a,
+.secondary .welcart_blog_calendar td a {
+	text-decoration: underline;
+}
+.secondary .wp-calendar-nav a:hover,
+.secondary .widget_calendar tfoot td a:hover,
+.secondary .welcart_blog_calendar tfoot td a:hover,
+.secondary .widget_calendar td a:hover,
+.secondary .welcart_blog_calendar td a:hover {
+	text-decoration: none;
+}
+
+
+/*  list
+----------------------------------------*/
+
+.widget_welcart_category li,
+.widget_welcart_page li,
+.usces_recent_entries li,
+.widget_archive li,
+.widget_categories li,
+.widget_nav_menu li,
+.widget_meta li,
+.widget_pages li,
+.widget_recent_entries li,
+.widget_recent_comments li,
+.widget_rss li {
+	margin-bottom: 8px;
+}
+.widget_welcart_post li {
+	margin-bottom: 16px;	
+}
+.widget_rss li .rsswidget {
+	display: block;
+	font-weight: 700;
+}
+.widget_rss li .rssSummary {
+	margin-top: 4px;
+	font-size: 12px;
+}
+.widget_rss li cite {
+	display: inline-block;
+	margin-top: 4px;
+}
+.widget_welcart_category li .children,
+.widget_nav_menu li .sub-menu,
+.widget_categories li .children {
+	margin: 8px 0 0 12px;
+}
+.widget_welcart_category li:last-child,
+.widget_welcart_page li:last-child,
+.widget_welcart_post li:last-child,
+.usces_recent_entries li:last-child,
+.widget_archive li:last-child,
+.widget_categories li:last-child,
+.widget_nav_menu li:last-child,
+.widget_meta li:last-child,
+.widget_pages li:last-child,
+.widget_recent_entries li:last-child,
+.widget_recent_comments li:last-child,
+.widget_rss li:last-child {
+	margin-bottom: 0;
+}
+.widget_welcart_post li .title {
+	margin-bottom: 6px;
+	font-weight: 700;
+}
+.widget_categories .screen-reader-text,
+.widget_archive .screen-reader-text {
+	display: none;
+}
+.widget_categories select,
+.widget_archive select {
+	width: 100%;
+}
+
+.widget_recent_entries li span {
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	display: block;
+	margin-top: 6px;
+	color: #666;
+	font-size: 12px;
+}
+
+.tagcloud a {
+	margin-right: 5px;
+}
+.tagcloud a:last-child {
+	margin-right: 0;
+}
+
+.secondary .search-box {
+	border: 1px solid #aaa;
+}
+.widget_welcart_search form {
+	position: relative;
+}
+.widget_welcart_search #searchsubmit {
+	background: url("../images/icon-search.svg") no-repeat center center;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 54px;
+	height: 44px;
+	padding: 0;
+	white-space: nowrap;
+	text-indent: 100%;
+	overflow: hidden;
+}
+.widget_welcart_search form div {
+	margin-top: 12px;
+}
+.widget_welcart_search form a {
+	text-decoration: underline;
+}
+
+.widget_welcart_login label {
+	display: inline-block;
+	margin-bottom: 12px;
+	width: 100%;
+}
+.widget_welcart_login a {
+	display: inline-block;
+	margin-top: 6px;
+}
+.widget_welcart_login label + br {
+	display: none;
+}
+.widget_welcart_login .loginmail,
+.widget_welcart_login .loginpass {
+	margin-top: 6px;
+}
+.widget_welcart_login .loginpass {
+	max-width: 360px;
+}
+.widget_welcart_login .submit {
+	margin-bottom: 12px;
+	max-width: 360px;
+}
+.widget_welcart_login #member_loginw {
+	width: 100%;
+	height: 44px;
+}
+
+
+@media screen and ( min-width: 38.75em ) {
+
+
+	/* -------------------------------------------------------------------------- */
+
+	/*	Secondary
+	/* -------------------------------------------------------------------------- */
+
+	/*  Item List Widget
+	----------------------------------------*/
+
+	.secondary .column-grid .list {
+		/*margin-right: 9px;*/
+		width: calc( 50% - 4.5px );
+	}
+	.secondary .column-grid5 .list:nth-child( even ) {
+		margin-right: 0;
+	}
+	.secondary .column-grid5 .list:nth-child( 5n ) {
+		margin-right: 9px;		
+	}
+
+
+}
+
+
+@media screen and ( min-width: 55em ) {
+
+
+	/* -------------------------------------------------------------------------- */
+
+	/*	Secondary
+	/* -------------------------------------------------------------------------- */
+
+	.secondary .widget {
+		margin-bottom: 48px;
+	}
+	.secondary:before  {
+		display: none;
+	}
+
+	/*  Item List Widget
+	----------------------------------------*/
+
+	.secondary .column-grid .list,
+	.secondary .widget_welcart_featured li {
+		margin: 0 0 12px;
+		width: 100%;
+	}
+	.secondary .column-grid .list:last-child,
+	.secondary .widget_welcart_featured li:last-child {
+		margin-bottom: 0;
+	}
+	.secondary .column-grid .list:nth-child( n+3 ),
+	.secondary .widget_welcart_featured li:nth-child( n+3 ) {
+		margin-top: 0;
+	}
+	.secondary .widget_welcart_calendar td,
+	.secondary .widget_calendar td {
+		padding: 6px;
+	}
+	.secondary .widget_welcart_bestseller li .img {
+		margin-left: 32px;
+		max-width: 64px;
+		width: 64px;
+	}
+	.secondary .widget_welcart_bestseller li .info {
+		width: calc( 100% - 106px );
+	}
+	.secondary .widget_welcart_bestseller .rankimg {
+		top: 50%;
+		left: 0;
+		-webkit-transform: translate(0, -50%);
+		transform: translate(0, -50%);
+	}
+
+	/*  Calendar
+	----------------------------------------*/
+
+	.secondary .widget_welcart_calendar li {
+		display: block;
+	}
+	.secondary .widget_welcart_calendar .this-month,
+	.secondary .widget_welcart_calendar .next-month,
+	.secondary .calendar_wrap,
+	.secondary .welcart_blog_calendar #calendar_wrap {
+		width: auto;
+	}
+	.secondary .widget_welcart_calendar .this-month {
+		margin: 0 0 24px;
+	}
+	.secondary .widget_welcart_calendar td,
+	.secondary .widget_calendar td,
+	.secondary .welcart_blog_calendar td {
+		font-size: 12px;
+	}
+
+}
+
+/**
+  * 16.4 Tablet Large 1000px
+  */
+@media screen and (min-width: 62.5em) {
+
+	.secondary .widget {
+		margin: 0 0 36px;
+	}
+
+}

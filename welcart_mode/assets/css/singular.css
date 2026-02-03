@@ -1,0 +1,349 @@
+/* -------------------------------------------------------------------------- */
+
+/*	singular
+/* -------------------------------------------------------------------------- */
+
+.entry-content h1 {
+	font-size: 138%;
+	line-height: 1.5;
+}
+.entry-content h2 {
+	font-size: 130.8%;
+	line-height: 1.5;
+}
+.entry-content h3 {
+	font-size: 123%;
+	line-height: 1.5;
+}
+.entry-content h4 {
+	font-size: 115.4%;
+	line-height: 1.5;
+}
+.entry-content h5 {
+	font-size: 107.7%;
+	line-height: 1.5;
+}
+.entry-content h6 {
+	font-size: 100%;
+	line-height: 1.5;
+}
+.entry-content ul {
+	list-style: disc;
+	margin-left: 1rem;
+	padding-inline-start: 0;
+}
+.entry-content ol {
+	padding-inline-start: 1.1em;
+}
+.entry-content table caption {
+	font-size: 115.4%;
+	line-height: 1.2;
+	padding: 8px;
+	border-top: 1px solid #cdcdcd;
+	font-weight: bold;
+}
+.entry-content table th,
+.entry-content table td {
+	padding: 8px;
+	vertical-align: middle;
+}
+.entry-content table th {
+	border-top: 1px solid #cdcdcd;
+	border-bottom: 1px solid #dedede;
+	line-height: 1.2;
+}
+.entry-content table td {
+	border-top: 1px dotted #dedede;
+	border-bottom: 1px dotted #dedede;
+}
+.entry-content .wp-block-button__link {
+	font-size: inherit;
+}
+.entry-content .shortcode-products ul {
+	margin-left: 0;
+	list-style: none;
+}
+.entry-content .shortcode-products li {
+	font-size: 10px;
+	line-height: 1.2;
+}
+
+.is-features {
+	margin-bottom: 30px;
+}
+.single-post-navigation .nav-links li {
+	position: relative;
+	transition: all .3s ease-in-out;
+}
+.single-post-navigation .nav-links li:hover {
+	margin: -5px 0 0;
+	padding: 0 0 5px;
+}
+.single-post-navigation .nav-links li:first-child {
+	margin-bottom: .5rem;
+}
+.single-post-navigation .nav-links li:last-child {
+	text-align: right;
+}
+.single-post-navigation .nav-links li a {
+	display: inline-block;
+	background-color: #f4f4f4;
+	padding: 6px 12px 6px 27px;
+	line-height: 1.2;
+	position: relative;
+	overflow: hidden;
+	transition: all .2s ease-in-out;
+}
+.single-post-navigation .nav-links li a:hover {
+	background-color: #fff;
+}
+.single-post-navigation .nav-links li:last-child a {
+	text-align: right;
+	padding: 6px 27px 6px 12px;
+}
+.single-post-navigation .nav-previous a:before {
+	content: '';
+	width: 6px;
+	height: 6px;
+	border: 0px;
+	border-top: solid 2px #aaa;
+	border-left: solid 2px #aaa;
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	-ms-transform: rotate(-45deg) translate(0%, -50%);
+	-webkit-transform: rotate(-45deg) translate(0%, -50%);
+	transform: rotate(-45deg) translate(0%, -50%);
+}
+.single-post-navigation .nav-next a:after {
+	content: '';
+	width: 6px;
+	height: 6px;
+	border: 0px;
+	border-top: solid 2px #aaa;
+	border-right: solid 2px #aaa;
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	-ms-transform: rotate(45deg) translate(0%, -50%);
+	-webkit-transform: rotate(45deg) translate(0%, -50%);
+	transform: rotate(45deg) translate(0%, -50%);
+}
+.eyecatch {
+	margin: -24px -20px 20px;
+}
+.eyecatch img {
+	max-width: 1120px;
+}
+.eyecatch img {
+	width: 100%;
+}
+.entry-header {
+	margin: 0 0 30px;
+}
+.entry-header .entry-title {
+	font-size: 18px;
+	line-height: 1.6;
+}
+.entry-content .blocks-gallery-grid {
+	margin-left: 0;
+}
+.entry-content .wp-caption {
+	width: 100%!important;
+}
+.entry-content .wp-block-image figcaption {
+	text-align: center;
+}
+.entry-header .data {
+	color: #777;
+}
+.entry-header .tag span {
+	display: inline-block;
+	background-color: #ebebeb;
+	color: #777;
+	line-height: 1.2;
+	font-size: 8px;
+	padding: 8px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+	margin: 10px 10px 0 0;
+}
+.entry-img {
+	margin-top: -18px;
+	margin-bottom: 12px;
+}
+.entry-meta {
+	margin-top: 36px;
+	font-size: 13px;
+}
+.entry-meta .date,
+.entry-meta .author,
+.entry-meta .tag,
+.entry-meta .cat {
+	display: block;
+	margin-bottom: 10px;
+	margin-right: 24px;
+	line-height: 16px;
+	vertical-align: middle;
+}
+.entry-meta .date span,
+.entry-meta .tag span,
+.entry-meta .cat span {
+	margin-right: 8px;
+	vertical-align: middle;
+	font-size: 16px;
+	font-weight: 700;
+}
+.entry-meta .author span {
+	margin-right: 8px;
+	vertical-align: middle;
+	font-size: 15px;
+	font-weight: 700;
+}
+.entry-meta span:last-child {
+	margin-right: 0;
+	margin-bottom: 0;
+}
+.entry-meta .author a {
+	text-decoration: underline;
+	margin-left: 12px;
+}
+.entry-meta .author a:hover {
+	text-decoration: none;
+}
+
+/* wp-img */
+.alignright {
+	float: right;
+	margin: 0.5em 0 0.5em 1em;
+}
+.aligncenter {
+	display: block;
+	margin: 0.5em auto;
+}
+.alignleft {
+	float: left;
+	margin: 0.5em 1em 0.5em 0;
+}
+
+/**
+ * 16.1 Mobile Large 620px
+ */
+@media screen and (min-width: 38.75em) {
+	.single-post-navigation .nav-links {
+		display: flex;
+		justify-content: space-between;
+	}
+	.single-post-navigation .nav-links li {
+		max-width: 49%;
+	}
+	.single-post-navigation .nav-links li:first-child {
+		margin-bottom: 0;
+	}
+	.is-features {
+		margin-bottom: 4rem;
+	}
+}
+
+
+/**
+ * 16.3 Tablet Large 880px
+ */
+@media screen and (min-width: 55em) {
+
+	.is-features {
+		margin-bottom: 6rem;
+	}
+
+}
+
+
+/**
+  * 16.4 Tablet Large 1000px
+  */
+@media screen and (min-width: 55em) {
+
+	.entry-header {
+		margin: 0 0 60px;
+	}
+	#content > .hentry {
+		max-width: 980px;
+		margin: auto;
+	}
+	.eyecatch {
+		margin: 0 calc(490px - 50vw) 40px;
+		text-align: center;
+	}
+	.site-column2 .eyecatch {
+		margin: 0 0 40px;
+	}
+	.entry-header {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 0 40px;
+	}
+	.entry-header .data {
+		font-size: 123%;
+	}
+	.entry-header .tag {
+		width: 100%;
+		margin-top: 13px;
+	}
+	.entry-header .tag span {
+		font-size: 13px;
+		padding: 10px;
+	}
+	.entry-meta .date,
+	.entry-meta .author,
+	.entry-meta .tag,
+	.entry-meta .cat {
+		display: inline-block;
+		margin-bottom: 0;
+	}
+	.entry-meta {
+		margin-top: 48px;
+		text-align: right;
+	}
+	.entry-content p {
+		font-size: 15px;
+		line-height: 2;
+	}
+	.entry-content h1 {
+		font-size: 176.9%;
+	}
+	.entry-content h2 {
+		font-size: 169%;
+	}
+	.entry-content h3 {
+		font-size: 153.8%;
+	}
+	.entry-content h4 {
+		font-size: 146%;
+	}
+	.entry-content h5 {
+		font-size: 138%;
+	}
+	.entry-content h6 {
+		font-size: 130.8%;
+	}
+	.entry-header .entry-title {
+		font-size: 184.6%;
+	}
+	.entry-content ul li,
+	.entry-content ol li {
+		font-size: 123%;
+		line-height: 2;
+	}
+	.entry-content table caption {
+		font-size: 130.8%;
+	}
+	.entry-content table th,
+	.entry-content table td {
+		font-size: 123%;
+	}
+
+}

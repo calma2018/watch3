@@ -1,0 +1,39 @@
+
+.square {
+	position: relative;
+	overflow: hidden;
+}
+.square:before {
+	content: '';
+	display: block;
+	padding-top: 100%;
+}
+.column-grid .list .square .overlay,
+.assistance_item li .square .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.column-grid .list .square .overlay .sub-img,
+.assistance_item li .square .overlay .sub-img {
+	opacity: 0;
+}
+.column-grid .list .square .overlay:hover .sub-img,
+.assistance_item li .square .overlay:hover .sub-img {
+	opacity: 1;
+}
+.square img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.section-home.widget_welcart_bestseller .rankimg {
+	z-index: 1;
+}

@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+/* =WCEX Widget Cart
+-------------------------------------------------------------- */
+
+.olwidget_orderdata_table td {
+	border-bottom: none;
+}
+.olwidget_orderdata_table tr {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em 0 0;
+	justify-content: flex-start;
+	align-items: center;
+	margin-right: -1em;
+}
+.olwidget_orderdata_table tr:after {
+	content: '';
+	display: block;
+	width: calc(100% - 1em);
+	border-bottom: 1px dotted #aaa;
+	margin-top: 1em;
+}
+.olwidget_orderdata_table tr:first-child:before {
+	border-top: 1px dotted #aaa;
+	content: '';
+	display: block;
+	width: calc(100% - 1em);
+	margin-bottom: 1em;
+}
+.olwidget_orderdata_table tr td {
+	display: block;
+	margin: 0.5em 1em 0.5em 0;
+	line-height: 1.2;
+}
+.olwidget_orderdata_table .olw_date {
+	width: 100%;
+}
+.olw_quant:before {
+	content: '数量 : ';
+}
+/**
+  * 16.4 Tablet Large 1000px
+  */
+@media screen and (min-width: 62.5em) {
+	.olwidget_orderdata_table .olw_item_name {
+		width: 100%;
+	}
+}

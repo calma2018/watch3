@@ -1,0 +1,13 @@
+{
+  "name": "collne/welcart_mode",
+  "require": {},
+  "require-dev": {
+    "wp-cli/i18n-command": "^2.2"
+  },
+  "license": "GPL-2.0",
+  "scripts": {
+    "i18n:create-pot": "wp i18n make-pot . languages/welcart_mode.pot",
+    "i18n:update-pos": "composer i18n:create-pot && find ./languages -name \"*.po\" | xargs -I % msgmerge -o % % languages/welcart_mode.pot",
+    "i18n:make-mo": "wp i18n make-mo languages"
+  }
+}

@@ -1,0 +1,155 @@
+.coordinates .add-item-header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.coordinates .add-item-header h4 {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.coordinates #loading {
+  display: flex;
+  align-items: center;
+}
+
+.coordinates #loading img {
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+
+.coordinates .meta-table {
+  border-spacing: 12px;
+}
+
+.coordinates .meta-table th {
+  text-align: left;
+}
+
+.coordinates #coordinates-getitembtn {
+  margin-left: 6px;
+  margin-bottom: 0;
+}
+
+.coordinates #coordinates-itemcode,
+.coordinates #coordinates-itemcodein {
+  min-width: 230px;
+}
+
+.coordinates .boxes {
+  display: flex;
+  flex-flow: row nowrap;
+  border-top: solid 0.1rem lightgrey;
+  border-left: solid 0.1rem lightgrey;
+  margin-top: 6px;
+}
+
+.coordinates .boxes > * {
+  padding: 1rem;
+  flex: 1;
+  border-right: solid 0.1rem lightgrey;
+  border-bottom: solid 0.1rem lightgrey;
+}
+
+.coordinates .item-details .description {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.coordinates .description .text {
+  font-weight: bold;
+}
+
+.coordinates .item-details .description > :not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.coordinates select {
+  max-width: 25rem;
+}
+
+.coordinates #item-tabs {
+  overflow: auto;
+  margin: 12px 0;
+}
+
+.coordinates li {
+  margin-bottom: 16px;
+}
+
+.coordinates .li-item-name {
+  height: 40px;
+  padding-left: 10px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.coordinates .li-item-name > :first-child {
+  flex: 1;
+}
+
+.coordinates .li-item-name .li-delete {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coordinates .li-item-name .dashicons-dismiss::before {
+  color: white;
+}
+
+.coordinates .li-item-name .li-delete {
+  cursor: pointer;
+}
+
+.coordinates .li-item-name:hover {
+  background-color: #128ae9;
+  color: white;
+}
+
+.coordinates .li-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  cursor: grab;
+  height: 40px;
+}
+
+.coordinates .li-wrapper:active {
+  cursor: grabbing;
+}
+
+.coordinates .li-wrapper img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  max-width: inherit;
+}
+
+@media screen and (min-width: 780px) {
+	.coordinates .meta-table th,
+	.coordinates .meta-table td {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 1300px) {
+	.coordinates .meta-table th,
+	.coordinates .meta-table td {
+		display: table-cell;
+	}
+	.coordinates .meta-table th {
+		white-space: nowrap;
+	}
+}
+
+@media only screen and (max-width: 1160px) {
+  .coordinates .boxes {
+    flex-flow: column nowrap;
+  }
+}

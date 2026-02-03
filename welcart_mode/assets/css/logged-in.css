@@ -1,0 +1,265 @@
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	WP5.8 Style - widgets-php
+/* -------------------------------------------------------------------------- */
+
+body.logged-in.sticky-menu {
+	background: #fff;
+	color: #333;
+}
+body.logged-in.sticky-menu a {
+	color: #333;
+}
+body.logged-in.sticky-menu .widgettitle {
+	margin-bottom: 1em;
+}
+body.logged-in.sticky-menu .widgettitle img {
+	width: 20px;
+	margin-right: .5em;
+}
+body.logged-in.sticky-menu .is-product .add-to-cart .field_price .field_cprice,
+body.logged-in.sticky-menu .tax,
+body.logged-in.sticky-menu #wcexaap-button-wrapper .info-message {
+	color: #333;
+}
+
+/*	.widget_mode_item_list
+/* -------------------------------------------------------------------------- */
+
+body.logged-in.sticky-menu .widget_mode_item_list {
+	position: relative;
+}
+body.logged-in.sticky-menu .widget_mode_item_list .entryhead {
+	margin-bottom: 24px;
+	min-height: 47px;
+}
+body.logged-in.sticky-menu .widget_mode_item_list .en {
+	display: block;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1;
+}
+body.logged-in.sticky-menu .widget_mode_item_list .title-normal .widgettitle {
+	font-size: 18px;
+}
+body.logged-in.sticky-menu .widget_mode_item_list .title-small .widgettitle {
+	margin: 4px 0 0;
+	font-size: 12px;
+	font-weight: normal;
+}
+body.logged-in.sticky-menu .widget_mode_item_list .more {
+	position: absolute;
+	top: -3px;
+	right: 2em;
+}
+body.logged-in.sticky-menu .widget_mode_item_list .more a {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #333;
+}
+
+
+/*  section - .widget_welcart_bestseller
+	section - .widget_welcart_featured
+----------------------------------------*/
+
+body.logged-in.sticky-menu .widget_welcart_bestseller h2,
+body.logged-in.sticky-menu .widget_welcart_featured h2 {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller ul,
+body.logged-in.sticky-menu .widget_welcart_featured ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller li,
+body.logged-in.sticky-menu .widget_welcart_featured li {
+	position: relative;
+	margin-right: 9px;
+	width: calc( 20% - 7.2px );
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller li:nth-child( 5n ),
+body.logged-in.sticky-menu .widget_welcart_featured li:nth-child( 5n ) {
+	margin-right: 0;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller li:nth-child( n+6 ),
+body.logged-in.sticky-menu .widget_welcart_featured li:nth-child( n+6 ) {
+	margin-top: 28px;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller .rankimg {
+	background-color: #fff;
+	position: absolute;
+	color: #333;
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller .rank1 .rankimg {
+	background-color: #dbb400;
+	color: #fff;
+	border: none;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller .rank2 .rankimg {
+	background-color: #999;
+	color: #fff;
+	border: none;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller .rank3 .rankimg {
+	background-color: #c47222;
+	color: #fff;
+	border: none;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller .rankimg {
+	top: 8px;
+	left: 8px;
+	font-size: 12px;
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller li .info,
+body.logged-in.sticky-menu .widget_welcart_featured li .info {
+	margin: 10px 5px 0; 
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller li .name,
+body.logged-in.sticky-menu .widget_welcart_featured li .name {
+	font-size: 11px;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller li .price,
+body.logged-in.sticky-menu .widget_welcart_featured li .price {
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	font-size: 13px;
+	margin-top: 4px;
+}
+/* -- .tax_inc_block -- */
+body.logged-in.sticky-menu .widget_welcart_bestseller li .tax_inc_block,
+body.logged-in.sticky-menu .widget_welcart_featured li .tax_inc_block {
+	font-size: 12px;
+}
+body.logged-in.sticky-menu .widget_welcart_bestseller li .tax_inc_block em,
+body.logged-in.sticky-menu .widget_welcart_featured li .tax_inc_block em {
+	margin-right: 3px;
+}
+
+
+
+/*  Calendar
+----------------------------------------*/
+
+body.logged-in.sticky-menu .widget_welcart_calendar li {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 11px;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar .this-month,
+body.logged-in.sticky-menu .widget_welcart_calendar .next-month {
+	margin-bottom: 8px;
+	width: calc( 50% - 4.5px );
+}
+body.logged-in.sticky-menu .calendar_wrap,
+body.logged-in.sticky-menu .welcart_blog_calendar #calendar_wrap {
+	margin: 0 auto;
+	width: 75%;
+	font-size: 11px;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar .this-month {
+	margin-right: 9px;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar table,
+body.logged-in.sticky-menu .widget_calendar table,
+body.logged-in.sticky-menu .welcart_blog_calendar table {
+	width: 100%;
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+}
+body.logged-in.sticky-menu .widget_welcart_calendar caption,
+body.logged-in.sticky-menu .widget_calendar table caption,
+body.logged-in.sticky-menu .welcart_blog_calendar table caption {
+	text-align: left;
+	color: #666;
+	font-size: 13px;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar th,
+body.logged-in.sticky-menu .widget_welcart_calendar td,
+body.logged-in.sticky-menu .widget_calendar th,
+body.logged-in.sticky-menu .widget_calendar td,
+body.logged-in.sticky-menu .welcart_blog_calendar th,
+body.logged-in.sticky-menu .welcart_blog_calendar td {
+	text-align: center;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar th,
+body.logged-in.sticky-menu .widget_calendar th,
+body.logged-in.sticky-menu .welcart_blog_calendar th {
+	padding: 0 3px;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar td,
+body.logged-in.sticky-menu .widget_calendar td,
+body.logged-in.sticky-menu .welcart_blog_calendar td {
+	padding: 3px;
+	font-size: 10px;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar td.businessday {
+	position: relative;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar td.businessday:before {
+	background-color: #eee;
+	display: block;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar span.businessday {
+	background-color: #eee;
+	margin-left: 4px;
+	width: 20px;
+	height: 20px;
+}
+body.logged-in.sticky-menu .widget_welcart_calendar td.businesstoday,
+body.logged-in.sticky-menu .widget_calendar td#today,
+body.logged-in.sticky-menu .welcart_blog_calendar td#today {
+	font-weight: 700;
+}
+body.logged-in.sticky-menu .wp-calendar-nav {
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	margin-top: 12px;
+}
+body.logged-in.sticky-menu .widget_calendar tfoot td#prev,
+body.logged-in.sticky-menu .welcart_blog_calendar tfoot td#prev {
+	font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'sans-serif';
+	padding-top: 6px;	
+}
+body.logged-in.sticky-menu .widget_calendar tfoot td#prev,
+body.logged-in.sticky-menu .welcart_blog_calendar tfoot td#prev {
+	text-align: left;
+}
+body.logged-in.sticky-menu .widget_calendar tfoot td#next,
+body.logged-in.sticky-menu .welcart_blog_calendar tfoot td#next {
+	text-align: right;
+}
+body.logged-in.sticky-menu .wp-calendar-nav a,
+body.logged-in.sticky-menu .widget_calendar tfoot td a,
+body.logged-in.sticky-menu .welcart_blog_calendar tfoot td a,
+body.logged-in.sticky-menu .widget_calendar td a,
+body.logged-in.sticky-menu .welcart_blog_calendar td a {
+	text-decoration: underline;
+}
+body.logged-in.sticky-menu .wp-calendar-nav a:hover,
+body.logged-in.sticky-menu .widget_calendar tfoot td a:hover,
+body.logged-in.sticky-menu .welcart_blog_calendar tfoot td a:hover,
+body.logged-in.sticky-menu .widget_calendar td a:hover,
+body.logged-in.sticky-menu .welcart_blog_calendar td a:hover {
+	text-decoration: none;
+}
+

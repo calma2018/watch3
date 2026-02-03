@@ -1,0 +1,101 @@
+@use "../global" as *;
+
+
+.default-head-img {
+  position: relative;
+  aspect-ratio: 9 / 4;
+  background-color: $Beige;
+  background-image: url("../../images/mv_pc.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @include sp {
+    aspect-ratio: 1 / 1.5128;
+    background-image: url("../../images/mv_sp.png");
+  }
+
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 200px;
+  //   background-image: linear-gradient(to bottom, rgba(249, 249, 246, 0), rgba(249, 249, 246, 1));
+  // }
+
+  img {
+    display: none;
+  }
+}
+
+.home-slide-container {
+  @include pc {
+    margin-bottom: 100px;
+  }
+}
+
+.section-home .entryhead .en {
+  @include sp {
+    font-size: 18px !important;
+    letter-spacing: 0.03em !important;
+  }
+}
+
+.section-home.brand {
+  background: $Beige;
+  background-image: linear-gradient(to right, $Beige, darken($Beige, 5%) ) !important;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  .brand-logo.list {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px rgba( darken($Gold, 15%), 0.5 );
+    // border: solid 1px rgba( $Blue, 0.3 );
+
+    img {
+      width: 80%;
+      height: auto;
+      @include sp {
+        // transform: translateY(-6px);
+      }
+      @include pc {
+        // transform: translateY(-8px);
+      }
+    }
+
+    .over {
+      // background: $Blue2;
+      // background-image: linear-gradient(to top, $Blue2, darken($Blue2, 15%) ) !important;
+      background: #f9f9f5;
+      color: darken($Gold, 20%) !important;
+      border-radius: 0 0 8px 8px;
+      box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.1);
+      // padding-top: 0;
+
+      .over-in {
+        padding: 10px 0 16px;
+        @include sp {
+          padding: 8px 0 13px;
+        }
+      }
+
+      h2 {
+        font-size: 15px;
+        line-height: 1.2;
+        margin-bottom: 2px;
+        font-weight: 600;
+        @include sp {
+          font-size: 14px;
+        }
+      }
+      .sub {
+        margin-top: 2px;
+        font-size: 10px;
+        line-height: 1.2;
+        color: darken($Gold, 10%) !important;
+      }
+    }
+  }
+}

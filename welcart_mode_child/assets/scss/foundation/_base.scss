@@ -1,0 +1,34 @@
+@use "../global" as *;
+
+body {
+  // background-color: $Beige_pale !important;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  word-break: break-word;
+}
+
+
+.footer-group .in {
+  // background-color: $Gold !important;
+  background-image: linear-gradient(to right, $Gold, darken($Gold, 15%) ) !important;
+}
+
+.site-logo {
+  // min-height: auto;
+  @include sp {
+    padding-left: 10px;
+    img {
+      width: auto;
+      max-height: 34px;
+    } 
+  }
+}
+
+.header-group.fixed_header {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.header-group.fixed_header .header_inner {
+  @include pc {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
+}

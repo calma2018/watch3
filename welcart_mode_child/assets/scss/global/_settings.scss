@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+//  width
+$bp: 743px; // ブレイクポイント
+
+//  color
+$Black: #222; // original
+$Gray: #616161;
+$Gray_pale: #f8f8f8;
+$Gray_pale2: #f8f8f8; 
+$Blue: #00184a; // original
+$Blue2: #006095; // original
+$Blue_pale: #edf5fd;
+$Green: #9ea640; // original
+$Gold: #847655; // original
+$Beige: #eeece1; // original
+$Beige_pale: #f9f9f5; // original
+$Red: #dd0000; // original
+$Pink: #e85298;
+
+$color_base: $Gold;
+$color_sub: $Blue;
+$color_text: $Black;
+$color_link: $Black;
+$color_border: darken($Beige, 10%);
+
+
+//  boxshadow
+$boxshadow_sp: 0px 3px 10px 0px rgba(0,0,0,0.3);
+$boxshadow_pc: 0px 5px 15px 0px rgba(0,0,0,0.3);
+
+
+//  mediaquery
+@mixin sp {
+  @media screen and (max-width: $bp) {
+    @content;
+  }
+}
+@mixin pc {
+  @media print, screen and (min-width: ($bp + 1)) {
+    @content;
+  }
+}
+@mixin pc_range_1 {
+  @media screen and (min-width: ($bp + 1)) and (max-width: 1729px) {
+    @content;
+  }
+}
+@mixin pc_range_2 {
+  @media screen and (min-width: ($bp + 1)) and (max-width: 1537px) {
+    @content;
+  }
+}
+@mixin pc_range_3 {
+  @media screen and (min-width: ($bp + 1)) and (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin upper_tablet {
+  @media print, screen and (min-width: (1161px)) {
+    @content;
+  }
+}
+@mixin lower_tablet {
+  @media screen and (max-width: 1160px) {
+    @content;
+  }
+}
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    @content;
+  }
+}
+
+@mixin clearFix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin icon($position, $display) {
+  &:#{$position} {
+    content: '';
+    display: $display;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover){
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hoverTransition {
+  transition: 0.15s linear;
+}
+@mixin hoverTransition2 {
+  transition: 0.1s linear;
+}
+
+@mixin moveTransition {
+  transition: 0.3s;
+}
+
+@mixin noGutter {
+  margin-left: - $spPadding;
+  margin-right: - $spPadding;
+}
+
+@mixin kerning {
+  font-feature-settings: "palt";
+}
+
+@mixin kerning_space {
+  font-feature-settings: "palt";
+  letter-spacing: 0.05em;
+}
+
+@mixin section_padding {
+  @include pc {
+    padding: 12rem 0 16rem;
+  }
+  @include sp {
+    padding: 8rem 0 10rem;
+  }
+
+  .l-contents & {
+    &:nth-last-of-type(1) {
+      padding-bottom: 0 !important;
+    }
+  }
+}
+
+@mixin aspectRatio($width, $height) {
+
+  img {
+    aspect-ratio: $width / $height;
+    object-fit: cover;
+    width: 100%; 
+    height: auto;
+  }
+
+  @supports not (aspect-ratio: auto) { 
+    position: relative;
+
+    &::before {
+      content: '';
+      float: left;
+      padding-top: calc(($height / $width) * 100%);
+    }
+    &::after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

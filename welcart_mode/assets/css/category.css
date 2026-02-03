@@ -1,0 +1,168 @@
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	5. Category
+/* -------------------------------------------------------------------------- */
+
+/*  a. Common
+----------------------------------------*/
+
+.category-img {
+	margin: -24px -1em 24px;
+}
+.category-description {
+	margin: -12px 0 24px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid #eee;
+}
+.list-info .headline {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 700;
+}
+.count-items {
+	text-align: center;
+}
+.count-items span {
+	margin-right: 6px;
+	font-size: 20px;
+	font-weight: 700;
+}
+.pages-info {
+	margin-bottom: 12px;
+	text-align: center;
+}
+
+
+/*  Product
+----------------------------------------*/
+
+.child-categories {
+	position: relative;
+	margin-bottom: 24px;
+}
+.selected-category {
+	background: url( ../../assets/images/select-arrow.svg ) center right 24px no-repeat #efefef;
+	margin: 0 -1em;
+	padding: 0 48px 0 24px;
+	height: 50px;
+	border-radius: 4px;
+	line-height: 50px;
+}
+.selected-category:hover {
+	cursor: pointer;
+}
+.is-child {
+	background-color: #fff;
+	display: none;
+	position: absolute;
+	top: 64px;
+	left: 0;
+	width: 100%;
+	box-shadow: 0px 2px 4px rgba( 0, 0, 0, .3);
+	border-radius: 8px;
+	z-index: 2;
+}
+.is-child a {
+	display: flex;
+	flex-wrap: wrap;
+}
+.is-child li {
+}
+.is-child li:last-child {
+	margin-bottom: 0;
+}
+.is-child a {
+	align-items: center;
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+.is-child .img {
+	margin-right: 12px;
+	max-width: 50px;
+}
+.is-child .name {
+	width: calc( 100% - 62px );
+}
+
+/* -------- .pagination -------- */
+
+.pagination-wrap.top {
+	margin-bottom: 12px;
+}
+
+
+
+/**
+ * 16.3 Tablet Large 880px
+ */
+@media screen and (min-width: 55em) {
+
+	/* -------------------------------------------------------------------------- */
+
+	/*	5. Category
+	/* -------------------------------------------------------------------------- */
+
+	/*  a. Common
+	----------------------------------------*/
+
+	/* ---- .list-info ---- */
+
+	.category-description {
+		margin-bottom: 60px;
+		padding-bottom: 36px;
+		line-height: 1.8;
+	}
+
+	/* ---- .list-info ---- */
+
+	.list-info {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.list-info .headline {
+		order: 2;
+		margin-bottom: 48px;
+		width: 33.333%;
+		font-size: 20px;
+	}
+	.list-info .count-items {
+		order: 1;
+		text-align: left;
+		width: 33.333%;
+		margin-top: -6px;
+	}
+	.list-info .count-items span {
+		font-size: 24px;
+	}
+	.list-info .inbox {
+		display: flex;
+		order: 3;
+		width: 33.333%;
+		justify-content: flex-end;
+	}
+	.list-info .pages-info {
+		margin: 3px 15px 0 0;
+	}
+	.list-info .is-child {
+		min-width: 420px;
+		left: -30px;
+	}
+	.selected-category {
+		margin: 0;
+	}
+	.list-info .child-categories {
+		order: 4;
+		margin: -12px 0 36px;
+		width: 360px;
+	}
+
+	/* -------- .pagination -------- */
+
+	.pagination-wrap.top {
+		margin-bottom: 0;
+	}
+
+}

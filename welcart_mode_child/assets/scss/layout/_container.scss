@@ -1,0 +1,18 @@
+@use "../global" as *;
+
+.l-container {
+  position: relative;
+	max-width: calc( 1180px + 2em );
+	margin-right: auto;
+	margin-left: auto;
+  @include pc {
+		max-width: calc( 1120px + 4em );
+  }
+
+  body.home & {
+    padding: 0 1em;
+    @include pc {
+      padding: 0 2em;
+    }
+  }
+}

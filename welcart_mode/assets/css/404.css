@@ -1,0 +1,72 @@
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	8. 404.php
+/* -------------------------------------------------------------------------- */
+
+.error-404 {
+	margin-bottom: 72px;
+}
+.error-404 .entry-header {
+	text-align: center;
+}
+.error-404 .entry-header .en {
+	margin-bottom: 36px;
+	color: #ccc;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.2;
+}
+.error-404 .entry-header .en span {
+	display: block;
+	font-size: 36px;
+}
+.error-404 .entry-header h1 {
+	margin-bottom: 12px;
+	font-size: 16px;
+}
+.error-404 .entry-content p {
+	margin-bottom: 12px;
+	text-align: center;
+	font-size: 14px;
+}
+.error-404 .search-box {
+	margin: 0 auto;
+	max-width: 480px;
+}
+.error-404 .search-box .search-text {
+	border: 1px solid #ddd;
+}
+
+
+/**
+ * 16.3 Tablet Large 880px
+ */
+@media screen and (min-width: 55em) {
+
+
+	/* -------------------------------------------------------------------------- */
+
+	/*	8. 404.php
+	/* -------------------------------------------------------------------------- */
+
+	.error-404 {
+		margin-bottom: 120px;
+	}
+	.error-404 .entry-header .en {
+		font-size: 24px;
+	}
+	.error-404 .entry-header .en span {
+		font-size: 70px;
+	}
+	.error-404 .entry-header h1 {
+		margin-bottom: 24px;
+		font-size: 20px;
+	}
+	.error-404 .entry-content p {
+		margin-bottom: 12px;
+		font-size: 16px;
+	}
+
+}

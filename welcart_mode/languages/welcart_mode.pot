@@ -1,0 +1,831 @@
+# S Copyright (C) Welcart Inc.
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Welcart Mode\n"
+"POT-Creation-Date: 2020-11-05 00:00+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Welcart Mode theme requires <strong>Welcart e-Commerce</strong>. Please <a href=\"plugins.php\">enable Welcart e-Commerce</a>."
+msgstr "Welcart Mode テーマを利用するには <strong>Welcart e-Commerce（ウェルカート）</strong> が必要です。<a href=\"plugins.php\">Welcart e-Commerce を有効化</a>してください"
+
+msgid "Global Navigation"
+msgstr "グローバル・ナビゲーション"
+
+msgid "Header Navigation"
+msgstr "ヘッダー・ナビゲーション"
+
+msgid "Footer Navigation"
+msgstr "フッター・ナビゲーション"
+
+msgid "Home Area1"
+msgstr "ホームエリア1"
+
+msgid "Home Area2"
+msgstr "ホームエリア2"
+
+msgid "Home Area3"
+msgstr "ホームエリア3"
+
+msgid "Home Area4"
+msgstr "ホームエリア4"
+
+msgid "Home Area5"
+msgstr "ホームエリア5"
+
+msgid "Sidebar Widget1"
+msgstr "サイドバー1"
+
+msgid "Sidebar Widget2"
+msgstr "サイドバー2"
+
+msgid "Sidebar Widget3"
+msgstr "サイドバー3"
+
+msgid "bottom of key visual image"
+msgstr "キービジュアル画像の下部"
+
+msgid "bottom of features list"
+msgstr "特集一覧の下部"
+
+msgid "bottom of coordinate list"
+msgstr "コーディネート一覧の下部"
+
+msgid "bottom of brand list"
+msgstr "ブランド一覧の下部"
+
+msgid "Post"
+msgstr "投稿"
+
+msgid "bottom of post list"
+msgstr "投稿一覧の下部"
+
+msgid "Top page only"
+msgstr "トップページ専用"
+
+msgid "Widget area for ​​product page or brand page or coordination page or feature page or search page"
+msgstr "商品ページ、ブランドページ、コーディネートページ、特集ページ、検索結果ページのウィジェットエリア"
+
+msgid "Widget area for page or post"
+msgstr "固定ページ、投稿ページのウィジェットエリア"
+
+msgid "My page"
+msgstr "マイページ"
+
+msgid "Name (Eng)"
+msgstr "名前（英語）"
+
+msgid "Image"
+msgstr "画像"
+
+msgid "Thumbnail"
+msgstr "サムネイル"
+
+msgid "Select Image"
+msgstr "画像を選択する"
+
+msgid "Please enter the category name in English."
+msgstr "カテゴリー名を英語表記で入力してください。"
+
+msgid "Height (cm)"
+msgstr "身長（cm）"
+
+msgid "Height"
+msgstr "身長"
+
+msgid "Please enter the model height."
+msgstr "モデルの身長を入力してください。"
+
+msgid "Type"
+msgstr "タイプ"
+
+msgid "Please select the model type."
+msgstr "モデルのタイプを選択してください。"
+
+msgid "Men"
+msgstr "男性"
+
+msgid "Women"
+msgstr "女性"
+
+msgid "Kid"
+msgstr "子供"
+
+msgid "Read"
+msgstr "読み方"
+
+msgid "Please enter how to read the brand name."
+msgstr "ブランド名の読み方を入力してください。"
+
+msgid "Coordinates"
+msgstr "コーディネート"
+
+msgid "Coordinate"
+msgstr "コーディネート"
+
+msgid "is coordinate"
+msgstr "のコーディネート"
+
+msgid "Search by coordinate"
+msgstr "コーディネートで探す"
+
+msgid "Add New Cordinate"
+msgstr "新規コーディネートを追加"
+
+msgid "New Coordinate"
+msgstr "新規コーディネート"
+
+msgid "Edit Coordinate"
+msgstr "コーディネートの編集"
+
+msgid "View Coordinate"
+msgstr "コーディネートの表示"
+
+msgid "All Coordinates"
+msgstr "コーディネート一覧"
+
+msgid "Coordinate list"
+msgstr "コーディネート一覧"
+
+msgid "Search Coordinates"
+msgstr "コーディネートを検索"
+
+msgid "No Coordinates found."
+msgstr "コーディネートが見つかりませんでした。"
+
+msgid "No Coordinates found in Trash."
+msgstr "ゴミ箱内にコーディネートが見つかりませんでした。"
+
+msgid "Feature"
+msgstr "特集"
+
+msgid "Features"
+msgstr "特集"
+
+msgid "Add New Feature"
+msgstr "新規特集を追加"
+
+msgid "Add New Category"
+msgstr "カテゴリーの追加"
+
+msgid "New Feature"
+msgstr "新規特集"
+
+msgid "Edit Feature"
+msgstr "特集の編集"
+
+msgid "View Feature"
+msgstr "特集の表示"
+
+msgid "All Features"
+msgstr "特集一覧"
+
+msgid "Feature list"
+msgstr "特集一覧"
+
+msgid "Search Features"
+msgstr "特集を検索"
+
+msgid "No Features found."
+msgstr "特集が見つかりませんでした。"
+
+msgid "No Features found in Trash."
+msgstr "ゴミ箱内に特集が見つかりませんでした。"
+
+msgid "Models"
+msgstr "モデル"
+
+msgid "Model"
+msgstr "モデル"
+
+msgid "Search Models"
+msgstr "モデルを検索"
+
+msgid "All Models"
+msgstr "モデル一覧"
+
+msgid "Edit Model"
+msgstr "モデルを編集"
+
+msgid "Update Model"
+msgstr "モデルを更新"
+
+msgid "Add New Model"
+msgstr "モデルを追加"
+
+msgid "Brands"
+msgstr "ブランド"
+
+msgid "Brand"
+msgstr "ブランド"
+
+msgid "Brand label"
+msgstr "ブランド名"
+
+msgid "Add New Brand"
+msgstr "新規ブランドを追加"
+
+msgid "New Brand"
+msgstr "新規ブランド"
+
+msgid "Edit Brand"
+msgstr "ブランドの編集"
+
+msgid "View Brand"
+msgstr "ブランドの表示"
+
+msgid "All Brands"
+msgstr "ブランド一覧"
+
+msgid "Brand list"
+msgstr "ブランド一覧"
+
+msgid "Search Brands"
+msgstr "ブランドを検索"
+
+msgid "No Brands found."
+msgstr "ブランドが見つかりませんでした。"
+
+msgid "No Brands found in Trash."
+msgstr "ゴミ箱内にブランドが見つかりませんでした。"
+
+msgid "%s <span>says</span>"
+msgstr "%s <span>様</span>"
+
+msgid "Thank you for the review. Please wait for a while until it is published."
+msgstr "レビューありがとうございます。公開されるまでしばらくお待ちください。"
+
+msgid "%1$s at %2$s"
+msgstr "%1$s %2$s"
+
+msgid "(Edit)"
+msgstr "（編集）"
+
+msgid "When you log in you can post a review"
+msgstr "ログインしてレビューを書く"
+
+msgid "Nickname"
+msgstr "ニックネーム"
+
+msgid "Nickname will be published."
+msgstr "ニックネームは公開されます。"
+
+msgid "Submit a review"
+msgstr "レビューを送信"
+
+msgid "Write a review for this product"
+msgstr "この商品のレビューを書く"
+
+msgid "We hope that you will post a review."
+msgstr "お客様のレビューをお待ちしています。"
+
+msgid "To login"
+msgstr "ログイン"
+
+msgid "Review"
+msgstr "レビュー"
+
+msgid "Item Description"
+msgstr "商品説明"
+
+msgid "Item Detail Page"
+msgstr "商品詳細ページ"
+
+msgid "Position of Item Description"
+msgstr "商品説明の表示位置"
+
+msgid "Default"
+msgstr "デフォルト"
+
+msgid "Display page title"
+msgstr "ページタイトルを表示する"
+
+msgid "The cart button"
+msgstr "カートボタン"
+
+msgid "The inquiry button"
+msgstr "お問い合わせボタン"
+
+msgid "At present we cannot deal with this product"
+msgstr "只今お取り扱い出来ません"
+
+msgid "Display the inquiry button"
+msgstr "お問い合わせボタンを表示する"
+
+msgid "Display when sold out"
+msgstr "売り切れ時の表示"
+
+msgid "Display only when sold out"
+msgstr "売り切れ時のみ表示"
+
+msgid "Always show"
+msgstr "常に表示"
+
+msgid "Please select the destination of the inquiry destination."
+msgstr "お問い合わせ先の遷移先を選択してください。"
+
+msgid "Please set the text."
+msgstr "テキストを設定してください。"
+
+msgid "Inquiries about this product"
+msgstr "この商品に関するお問い合わせ"
+
+msgid "Theme Option"
+msgstr "テーマオプション"
+
+msgid "Posts list page"
+msgstr "投稿一覧ページ"
+
+msgid "Posts list"
+msgstr "投稿一覧"
+
+msgid "Change the link destination of the Continue shopping button"
+msgstr "「買い物を続ける」ボタンのリンク先を変更する"
+
+msgid "Destination URL"
+msgstr "リンク先のURL"
+
+msgid "Features list page"
+msgstr "特集一覧ページ"
+
+msgid "Default display"
+msgstr "デフォルト表示"
+
+msgid "Display by category"
+msgstr "カテゴリー毎に表示"
+
+msgid "Features List Top"
+msgstr "特集一覧 トップ"
+
+msgid "Please select a display column."
+msgstr "列数を選択してください。"
+
+msgid "Please set the number of items to be displayed."
+msgstr "表示件数を設定してください。"
+
+msgid "Item List"
+msgstr "商品一覧"
+
+msgid "Display a list of child categories on the product category page"
+msgstr "商品カテゴリーページに子カテゴリー一覧を表示する"
+
+msgid "item tag"
+msgstr "商品タグ"
+
+msgid "month (Automatic Updates)"
+msgstr "ヶ月（自動更新）"
+
+msgid "Display the Catchphrase"
+msgstr "キャッチフレーズを表示する"
+
+msgid "Please select a display number."
+msgstr "表示件数を選択してください。"
+
+msgid "Please select a category to be displayed."
+msgstr "表示するカテゴリーを選択してください。"
+
+msgid "Front Setting"
+msgstr "フロント設定"
+
+msgid "Display features"
+msgstr "特集を表示する"
+
+msgid "Display Coordinate"
+msgstr "コーディネートを表示する"
+
+msgid "Display Brand"
+msgstr "ブランドを表示する"
+
+msgid "Display Posts"
+msgstr "記事一覧を表示する"
+
+msgid "Border Color"
+msgstr "ボーダー色"
+
+msgid "Border around the image"
+msgstr "画像の周りにボーダーを入れる"
+
+msgid "Mobile only"
+msgstr "モバイルのみ実装"
+
+msgid "Mobile"
+msgstr "モバイル"
+
+msgid "List Menu"
+msgstr "リストメニュー"
+
+msgid "Tab Menu"
+msgstr "タブメニュー"
+
+msgid "Slide Function"
+msgstr "スライド機能を実装"
+
+msgid "Layout"
+msgstr "表示レイアウト"
+
+msgid "Left Sidebar"
+msgstr "左サイドバー"
+
+msgid "Right Sidebar"
+msgstr "右サイドバー"
+
+msgid "Post single page"
+msgstr "投稿詳細ページ"
+
+msgid "Post list page"
+msgstr "投稿一覧ページ"
+
+msgid "Item list page"
+msgstr "商品一覧ページ"
+
+msgid "Item single page"
+msgstr "商品詳細ページ"
+
+msgid "Coordinates list page"
+msgstr "コーディネート一覧ページ"
+
+msgid "Coordinates single page"
+msgstr "コーディネート詳細ページ"
+
+msgid "Brand list page"
+msgstr "ブランド一覧ページ"
+
+msgid "Feature list Page"
+msgstr "特集一覧ページ"
+
+msgid "Search result page"
+msgstr "検索結果ページ"
+
+msgid "SNS Setting"
+msgstr "SNS設定"
+
+msgid "Display facebook"
+msgstr "Facebook の表示"
+
+msgid "Enter the your page name."
+msgstr "Facebookページ名を入力してください。"
+
+msgid "Show facebook"
+msgstr "Facebook を表示する"
+
+msgid "Display X"
+msgstr "X の表示"
+
+msgid "Enter your user name."
+msgstr "ユーザー名を入力してください。"
+
+msgid "Enter your directory name."
+msgstr "ディレクトリ名を入力してください。"
+
+msgid "Show X"
+msgstr "X を表示する"
+
+msgid "Display instagram"
+msgstr "Instagram の表示"
+
+msgid "Show instagram"
+msgstr "Instagram を表示する"
+
+msgid "Display youtube"
+msgstr "Youtube の表示"
+
+msgid "Display LINE@ share button"
+msgstr "LINE@を表示する"
+
+msgid "Enter your site URL."
+msgstr "WebサイトのURLを入力してください。"
+
+msgid "Welcart Voguish theme requires <strong>Welcart e-Commerce</strong>. Please <a href=\"plugins.php\">enable Welcart e-Commerce</a>."
+msgstr "Welcart Voguish テーマを利用するには <strong>Welcart e-Commerce（ウェルカート）</strong> が必要です。<a href=\"plugins.php\">Welcart e-Commerce を有効化</a>してください。"
+
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "<span class=\"screen-reader-text\">\"%s\"の</span>続きを読む"
+
+msgid "Show eye catch on post single"
+msgstr "アイキャッチ画像を表示する"
+
+msgid "Show"
+msgstr "表示する"
+
+msgid "Do not show"
+msgstr "表示しない"
+
+msgid "Display the produt tag"
+msgstr "商品タグを表示する"
+
+msgid "Display a Sub Image when Hover"
+msgstr "商品画像ホバー時にサブ画像を表示する"
+
+msgid "Switching Fade or Slide for Header image"
+msgstr "ヘッダー画像のフェード・スライド切り替え"
+
+msgid "Slide"
+msgstr "スライド"
+
+msgid "Fade"
+msgstr "フェード"
+
+msgid "Switching The Auto Play for The Slider"
+msgstr "スライダーの自動再生"
+
+msgid "Activate"
+msgstr "有効"
+
+msgid "Deactivate"
+msgstr "無効"
+
+msgid "Autoplay speed (in seconds)"
+msgstr "自動再生スピード（秒単位）"
+
+msgid "Slide and Fade animation speed"
+msgstr "アニメーション速度（秒単位）"
+
+msgid "Adding Fixed Header"
+msgstr "ヘッダーを固定する"
+
+msgid "Background Color"
+msgstr "背景色"
+
+msgid "Text Color"
+msgstr "テキスト色"
+
+msgid "Link Color"
+msgstr "リンク色"
+
+msgid "Icon Color"
+msgstr "アイコン色"
+
+msgid "Price Color"
+msgstr "価格"
+
+msgid "New Item Tag"
+msgstr "新着商品タグ"
+
+msgid "Recommend Item Tag"
+msgstr "お勧め商品タグ"
+
+msgid "Few Stock Tag"
+msgstr "在庫僅少タグ"
+
+msgid "Sale Tag"
+msgstr "セールタグ"
+
+msgid "Item Widget"
+msgstr "商品ウィジェット"
+
+msgid "Header"
+msgstr "ヘッダー"
+
+msgid "Fixed Header"
+msgstr "ヘッダー固定"
+
+msgid "Menu display type"
+msgstr "メニューの表示タイプ"
+
+msgid "Please select a display type."
+msgstr "表示タイプを選択してください。"
+
+msgid "Models sporting this item"
+msgstr "このアイテムを使ったコーディネイト"
+
+msgid "Total Price"
+msgstr "合計金額"
+
+msgid "Get Results"
+msgstr "取得をする"
+
+msgid "Related Items Selection"
+msgstr "関連アイテムの選択"
+
+msgid "Add To List"
+msgstr "リストへ追加する"
+
+msgid "Display selecting the items."
+msgstr "表示する項目を選択してください。"
+
+msgid "Display a Model Information"
+msgstr "モデルを表示する"
+
+msgid "Display The Model Coordinate List"
+msgstr "同じモデルのコーディネート一覧を表示する"
+
+msgid "Display The Coordinate Tag List"
+msgstr "コーディネートタグを表示する"
+
+msgid "The contents of the list can be set from the Coordination list."
+msgstr "リストの内容は「コーディネート一覧」から設定することができます。"
+
+msgid "entirety"
+msgstr "サイト全体"
+
+msgid "Other"
+msgstr "その他"
+
+msgid "Table"
+msgstr "テーブル"
+
+msgid "Button"
+msgstr "ボタン"
+
+msgid "Button1"
+msgstr "ボタン1"
+
+msgid "Button2"
+msgstr "ボタン2"
+
+msgid "Button3"
+msgstr "ボタン3"
+
+msgid "Sub Color"
+msgstr "サブカラー"
+
+msgid "Icon"
+msgstr "アイコン"
+
+msgid "Copyright"
+msgstr "コピーライト"
+
+msgid "Current"
+msgstr "カレント"
+
+msgid "Panel"
+msgstr "パネル"
+
+msgid "Table Head"
+msgstr "見出し"
+
+msgid "Those who have not yet registered as a member"
+msgstr "まだ会員登録がお済みでない方"
+
+msgid "My Page"
+msgstr "マイページ"
+
+msgid "View list"
+msgstr "一覧を見る"
+
+msgid "English notation"
+msgstr "英語表記"
+
+msgid "Product category to show:"
+msgstr "表示する商品カテゴリー:"
+
+msgid "Column:"
+msgstr "カラム数:"
+
+msgid "Welcart product list"
+msgstr "Welcart 商品一覧"
+
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "お探しのページが見つかりません。"
+
+msgid "There is nothing here. Please try the search."
+msgstr "こちらには何もありません。検索をお試しください。"
+
+msgid "All items"
+msgstr "全商品一覧"
+
+msgid "is item list"
+msgstr "の商品一覧"
+
+msgid "Narrow down"
+msgstr "さらに絞り込む"
+
+msgid "Search Results for: %s"
+msgstr "「%s」の検索結果"
+
+msgid "Styling items"
+msgstr "スタイリングアイテム"
+
+msgid "Link to the image. (Only the header image is valid)"
+msgstr "画像のリンク先を記入。（ヘッダー画像のみ有効）"
+
+msgid "Save %d&#37;"
+msgstr "表示価格より%d&#37; OFF"
+
+msgid "%d times more points"
+msgstr "ポイント%d倍"
+
+msgid "New"
+msgstr "新着商品"
+
+msgid "Recommend"
+msgstr "お勧め商品"
+
+msgid "Few Stock"
+msgstr "在庫僅少"
+
+msgid "Sale"
+msgstr "セール商品"
+
+msgid "Footer"
+msgstr "フッター"
+
+msgid "Item"
+msgstr "商品"
+
+msgid "Sold out"
+msgstr "売り切れ"
+
+msgid "Error Message"
+msgstr "エラーメッセージ"
+
+msgid "Please set the title."
+msgstr "タイトルを入力してください。"
+
+msgid "Please set the title(eng)."
+msgstr "タイトルを英語表記で入力してください。"
+
+msgid "The Model Information"
+msgstr "モデル情報"
+
+msgid "of"
+msgstr "の"
+
+msgid "Search by"
+msgstr "で検索する"
+
+msgid "Styling Item"
+msgstr "スタイリングアイテム"
+
+msgid "Please set the Sub title."
+msgstr "サブタイトルを入力してください"
+
+msgid "Parent Brand"
+msgstr "親のブランド"
+
+msgid "Newest Date"
+msgstr "日付の新しい順"
+
+msgid "Oldest Date"
+msgstr "日付の古い順"
+
+msgid "Product List of"
+msgstr "の商品一覧"
+
+msgid "The Members Enter Here"
+msgstr "会員の方はこちら"
+
+msgid "The Nonmembers Enter Here"
+msgstr "非会員の方はこちら"
+
+msgid "Category"
+msgstr "分類名"
+
+msgid "Type A"
+msgstr "メニュータイプA"
+
+msgid "Type B"
+msgstr "メニュータイプB"
+
+msgid "List menu for smartphones, accordion menu for PCs / tablet"
+msgstr "スマホ：リストメニュー表示　PC・タブレット：アコーディオンメニュー表示"
+
+msgid "Tab menu for smartphone, mega menu for PC/tablet"
+msgstr "スマホ：タブメニュー表示　PC・タブレット：メガメニュー表示"
+
+msgid "Top of page"
+msgstr "ページ上部"
+
+msgid "Show youtube"
+msgstr "Youtube を表示する"
+
+msgid "Show LINE@"
+msgstr "LINE@ を表示する"
+
+msgid "Display The Widget Cart in Header"
+msgstr "ヘッダーにカートを表示"
+
+msgid "Enable Display"
+msgstr "表示を有効にする"
+
+msgid "Quantity Background Color"
+msgstr "数量の背景色"
+
+msgid "The product was not found."
+msgstr "商品が見つかりませんでした。"
+
+msgid "Display Images of List to Square"
+msgstr "リストの画像を正方形で表示する"
+
+msgid "Agree"
+msgstr "同意する"
+
+msgid "Text to be displayed on \"New\" tag"
+msgstr "「新着商品」タグに表示するテキスト"
+
+msgid "Text to be displayed on \"Recommend\" tag"
+msgstr "「お勧め商品」タグに表示するテキスト"
+
+msgid "Text to be displayed on \"Sale\" tag"
+msgstr "「セール商品」タグに表示するテキスト"
+
+msgid "If blank, \"Sale\" tag is not displayed."
+msgstr "空白にすると「セール商品」タグは表示しません。"

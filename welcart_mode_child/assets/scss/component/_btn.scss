@@ -1,0 +1,106 @@
+@use "../global" as *;
+
+.c-btnStyle1 {
+  position: relative;
+  display: inline-block;
+  min-width: 23rem;
+  line-height: 1.3;
+  margin: 0;
+  padding: 1.8rem 4.5rem 1.8rem 3rem;
+  border: solid 1px $color_base;
+  border-radius: 10rem;
+  background: $color_base;
+  text-decoration: none !important;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: left;
+  color: #fff !important;
+  z-index: 1;
+  transition: 0.2s;
+  @include sp {
+    min-width: 20rem;
+    font-size: 1.4rem;
+    padding: 1.8rem 4.5rem 1.8rem 3rem;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5.2rem;
+    bottom: 0;
+    left: -1.6rem;
+    margin: auto;
+    width: 1.6rem;
+    height: 1.6rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: $color_base;
+    transform: scale(0);
+    transition: 0.2s;
+  }
+
+  @include hover {
+    transform: translate(0.8rem,0);
+    &::before {
+      transform: scale(1);
+    }
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right:  1.2rem;
+    margin: auto;
+    width: 2.7rem;
+    height: 2.7rem;
+    background: #fff url(../images/common/ico_arrow.svg) no-repeat 55% center;
+    background-size: 45%;
+    border-radius: 50%;
+  }
+
+  &[target="_blank"] {
+
+    > span {
+      padding-right: 1.3em;
+    
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 1em;
+        height: 1em;
+        background: url(../images/common/ico_blank_wh.svg) no-repeat center center;
+        background-size: contain;
+        border: none;
+        transform: rotate(0);
+      }
+    }
+  }
+
+  &[data-btn="inactive"] {
+    background-color: #aaa;
+    pointer-events: none;
+    border-color: #aaa;
+  }
+}
+
+.c-btnStyle1--border {
+  @extend .c-btnStyle1;
+  border: solid 1px rgb(255 255 255 / 0.5);
+  // background: transparent;
+
+  &::before {
+    background-color: rgb(255 255 255 / 0.7);
+  }
+}
+
+
+

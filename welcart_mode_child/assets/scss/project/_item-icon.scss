@@ -1,0 +1,31 @@
+@use "../global" as *;
+
+
+.opt-tag-icon {
+	padding: 4px 8px;
+	font-size: 10px;
+	line-height: 1.2;
+	color: #fff;
+
+  &[data-icon="new"] {
+    background-color: lighten($Blue2, 7%) !important;
+  }
+  &[data-icon="reco"] {
+    background-color: $Green !important;
+  }
+  &[data-icon="used"] {
+    background-color: $Black !important;
+  }
+  &[data-icon="unused"] {
+    background-color: $Gold !important;
+  }
+  &[data-icon="sale-cat"] {
+    background-color: darken($Red, 7%) !important;
+  }
+  &[data-icon="stock"] {
+    background-color: $Blue !important;
+  }
+  &[data-icon="sale"] {
+    background-color: darken($Red, 10%) !important;
+  }
+}

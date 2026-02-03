@@ -1,0 +1,23 @@
+@use "../global" as *;
+
+.l-breadcrumbs {
+  position: relative;
+  line-height: 1.75;
+  color: #666;
+
+  @include pc {
+    padding: 0;
+    margin: -30px auto 30px;
+    font-size: 13px;
+  }
+  @include sp {
+    padding: 0;
+    font-size: 11px;
+    margin: 0px 0 40px;
+  }
+
+  a {
+    color: #666;
+  }
+
+}

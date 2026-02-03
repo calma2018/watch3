@@ -1,0 +1,42 @@
+@use "../global" as *;
+
+.u-loadlazy {
+}
+.u-loadlazy.hide {
+  opacity: 0;
+}
+.u-loadlazy.show {
+  transition: opacity 0.3s linear;
+  opacity: 1 !important;
+}
+
+
+.u-showLoading {
+  position: relative;
+}
+
+.u-showLoading:has(.u-loadlazy){
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    margin: auto;
+    opacity: 0.5;
+    background: url("../images/common/loading.svg") no-repeat center center / contain;
+    @include pc {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}
+.u-showLoading:has(.u-loadlazy.show){
+  &::before {
+    display: none;
+  }
+}

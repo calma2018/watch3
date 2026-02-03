@@ -1,0 +1,38 @@
+@use "../global" as *;
+
+
+.product-group .list .img {
+  border-radius: 6px;
+}
+body.home .list .img {
+  border-radius: 6px;
+}
+
+.list {
+  .info {
+    h2 {
+      font-weight: 500 !important;
+      font-size: 13px !important;
+    }
+    .price {
+      font-size: 16px !important;
+    }
+    .itemsoldout {
+      text-transform: uppercase !important
+    }
+  }
+}
+
+.list.category-backorder {
+  .itemsoldout {
+    display: none;
+  }
+}
+
+body.home #mode_item_list-3 {
+  .list {
+    .itemsoldout {
+      display: none;
+    }
+  }
+}

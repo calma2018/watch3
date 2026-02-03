@@ -1,0 +1,86 @@
+@use "../global" as *;
+
+.pagination {
+	text-align: center;
+	margin: 30px 0 20px;
+  font-size: 0;
+  line-height: 1.2;
+  @include pc {
+    margin: 40px 0;
+  }
+  
+  a,
+  span {
+    position: relative;
+    display: inline-block;
+  	background: #eee;
+  	// border: 1px solid #999;
+  	border-radius: 4px;
+  	margin: 0 2px 5px 2px;
+  	padding: 9px 10px 10px;
+    font-size: 1.4rem;
+  	text-decoration: none;
+    color: #1e1e1e;
+    vertical-align: top;
+    @include pc {
+    	padding: 9px 12px 11px;
+      font-size: 1.6rem;
+    }
+    
+    &.current {
+    	background: $Black;
+    	border-color: $Black;
+    	color: #fff;
+    }
+  }
+  
+  a {
+    @include pc {
+      &:hover {
+      	background: $Black;
+      	border-color: $Black;
+        color: #fff;
+        &::after {
+          border-color: #fff;
+        }
+      }
+    }
+  }
+  
+  .page-prev,
+  .page-next {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      bottom: 0;
+      right: 13px;
+      margin: auto;
+      vertical-align: middle;
+      width: 7px;
+      height: 7px;
+      border-top: 2px solid #333;
+      border-right: 2px solid #333;
+      transform: rotate(45deg);
+      @include pc {
+      	right: 10px;
+      }
+    }
+  }
+  .page-next {
+    padding-right: 25px;
+  }
+  
+  .page-prev {
+    padding-left: 25px;
+    &::after {
+      right: inherit;
+      left: 13px;
+      transform: rotate(225deg);
+      @include pc {
+      	left: 10px;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,885 @@
+/* = Common
+-------------------------------------------------------------- */
+
+#delivery_flag + .customer_form {
+	margin-bottom: 24px;
+}
+
+.ui-dialog input,
+.open_allocation_bt,
+.go_destination a {
+	-webkit-transition: .3s ease all;
+	-moz-transition: .3s ease all;
+	-o-transition: .3s ease all;
+	transition: .3s ease all;
+}
+
+.go_destination a:hover {
+	text-decoration: none;
+}
+
+/* Delivery Page */
+.customer_form .msa_row label {
+	width: auto;
+}
+
+#delivery_flag3 {
+	margin: 0;
+}
+
+/* button white-orange */
+.open_allocation_bt {
+	border: none;
+	background-color: #777;
+	color: #fff;
+}
+
+/* button blue */
+#memberinfo .msa_area .return_navi a,
+.ui-widget-content .go_destination a {
+	border-color: #2ea2cc;
+	background-color: #2ea2cc;
+	-webkit-box-shadow: inherit;
+	box-shadow: inherit;
+}
+
+#memberinfo .msa_area .return_navi a:hover,
+.ui-widget-content .go_destination a:hover {
+	background-color: #1e8cbe;
+}
+
+/* button orange */
+#determine,
+#new_alloc_button,
+input[type="button"].allocation_edit_button {
+	border-color: #777;
+	background-color: #777;
+}
+
+#determine:hover,
+#new_alloc_button:hover,
+input[type="button"].allocation_edit_button:hover {
+	border-color: inherit;
+	background-color: inherit;
+}
+
+/* button gray */
+input[type="button"].allocation_delete_button {
+	border: 1px solid #d3d3d3;
+}
+
+#AllAllocationPDF,
+#determine,
+#del_destination,
+#new_destination,
+#add_destination,
+#edit_destination,
+#cancel_destination,
+#new_alloc_button,
+.open_allocation_bt,
+.allocation_edit_button,
+.allocation_delete_button,
+.return_navi a,
+.go_destination a,
+#AllAllocationPDF:active,
+#determine:active,
+#del_destination:active,
+#new_destination:active,
+#add_destination:active,
+#edit_destination:active,
+#cancel_destination:active,
+#new_alloc_button:active,
+.open_allocation_bt:active,
+.allocation_edit_button:active,
+.allocation_delete_button:active,
+.return_navi a:active,
+.go_destination a:active {
+	-webkit-box-shadow: inherit;
+	box-shadow: inherit;
+}
+
+#new_destination,
+#add_destination,
+#edit_destination,
+.ui-widget-content .go_destination a {
+	border: inherit;
+}
+
+/* ------------------------------------------------------------ *
+
+* wc_delivery_page.php
+-------------------------------------------------------------- */
+
+/* dialog style
+-------------------------------------------------------------- */
+
+.open_allocation_bt {
+	border: none;
+}
+
+.ui-dialog.allocation {
+	left: inherit;
+	max-height: 80%;
+	margin: 0 10px;
+	padding: 0;
+	overflow-y: scroll;
+	border: none;
+}
+
+/* ---- header ---- */
+
+.ui-dialog.allocation .ui-dialog-title {
+	margin: 6px 0 0;
+}
+
+.ui-dialog.allocation .ui-widget-header {
+	padding: 10px;
+	border: none;
+	border-radius: 0;
+	background: none;
+	font-size: 16px;
+}
+
+/* ---- contents ---- */
+
+.ui-dialog.allocation #allocation_dialog {
+	width: 100% !important;
+	min-width: inherit !important;
+	max-height: none !important;
+	padding: 10px 10px 0;
+}
+
+.allocation_dialog_exp {
+	font-size: 12px;
+}
+
+.allocation_inner #allocate_response .errmes {
+	margin: 0;
+	padding: 5px 0;
+	background: none;
+	color: #d00;
+	font-weight: bold;
+}
+
+/* ---- button ---- */
+
+.go_destination a,
+#new_alloc_button,
+.destination_area .destination_name,
+.destination_area .edit_button_area {
+	display: block;
+	width: 100%;
+	font-size: 13px;
+}
+
+.new_alloc_button_area {
+	margin-bottom: 10px;
+}
+
+.go_destination {
+	display: block;
+	margin: 0 0 8px;
+}
+
+.go_destination a {
+	text-align: center;
+}
+
+.destination_area .destination_name,
+.destination_area .edit_button_area {
+	margin-bottom: .5em;
+	float: none;
+}
+
+.destination_area .edit_button_area {
+	text-align: center;
+}
+
+input[type="button"].allocation_edit_button {
+	width: 60%;
+}
+
+.ui-dialog.allocation select#destination {
+	width: 9em;
+	height: 2.5em;
+	margin-right: .5em;
+	margin-bottom: 12px;
+	vertical-align: inherit;
+}
+
+.allocation_list_brock {
+	margin-bottom: 20px;
+}
+
+.allocation_list_brock:last-child {
+	margin-bottom: 0;
+}
+
+/* ---- table ---- */
+#allocation_newarea {
+	margin-top: 1em;
+	border: none;
+	-webkit-box-shadow: inherit;
+	box-shadow: inherit;
+}
+
+.allocation_listarea_title {
+	font-size: 15px;
+}
+
+.msa_table,
+.msa_table tbody,
+.msa_table tr,
+.msa_table th,
+.msa_table td {
+	display: block;
+}
+
+.msa_table tr {
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #ddd;
+}
+
+#allocation_newarea .msa_table th,
+#allocation_newarea .msa_table td,
+.msa_table th,
+.msa_table td {
+	border: none;
+}
+
+.msa_table td.msa_check {
+	width: auto;
+	margin-right: 0;
+	float: left;
+}
+
+.msa_table td.msa_check input {
+	border: 1px solid #aaa;
+	opacity: .5;
+	background-color: #fff;
+	-webkit-appearance: none;
+	-moz-appearance: checkbox;
+	appearance: checkbox;
+}
+
+.msa_table td.msa_check input:checked {
+	opacity: 1;
+	background-image: url("assets/images/check-solid.svg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 60% 60%;
+}
+
+.msa_table td.msa_thumb {
+	padding: 0;
+	float: left;
+}
+
+.msa_table .msa_item_name,
+.msa_table .msa_price,
+.msa_table td.msa_quantity {
+	margin-left: 93px;
+	padding: 0;
+	font-size: 12px;
+}
+
+.msa_table .msa_item_name {
+	position: relative;
+	top: -5px;
+}
+
+.msa_table .msa_price,
+.msa_table td.msa_quantity {
+	text-align: left !important;
+}
+
+.msa_table td.msa_quantity {
+	margin-top: 5px;
+}
+
+.msa_table td.msa_quantity input {
+	width: 40px;
+	height: 40px;
+	margin-left: 8px;
+	padding: 0 10px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.msa_table .msa_arrow {
+	display: none;
+}
+
+.allocation_add_button {
+	margin-top: 12px;
+}
+
+.allocation_add_button #determine {
+	width: 100%;
+}
+
+.destination_area {
+	margin-bottom: 20px;
+	border: none;
+}
+
+/* ---- footer ---- */
+.ui-dialog .ui-dialog-buttonpane {
+	margin-top: 0 !important;
+	padding: 8px 12px 20px !important;
+	border: none;
+	text-align: center !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float: none !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button {
+	width: 100%;
+	margin: 0;
+	border: none;
+	background-color: #eee !important;
+	color: #333;
+	font-size: 13px;
+}
+
+
+/* = Confirm Page
+-------------------------------------------------------------- */
+#wc_confirm .currency_code {
+	margin-bottom: 12px;
+}
+
+#wc_confirm #cart-table tbody tr {
+	min-height: auto;
+	overflow: hidden;
+}
+
+#wc_confirm #cart-table td.msa-destination {
+	display: block;
+	padding: 0;
+	font-weight: bold;
+	text-align: left;
+}
+
+#wc_confirm #cart-table td.msa-postage-title {
+	display: block;
+	width: 50px;
+	margin-bottom: 6px;
+	padding: 0;
+	float: left;
+	font-weight: bold;
+}
+
+#wc_confirm #cart-table td.msa-postage-title::after {
+	content: "：";
+	display: inline-block;
+	float: right;
+	vertical-align: middle;
+}
+
+#wc_confirm #cart-table td.msa-postage-detail {
+	display: block;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	padding: 0;
+	float: left;
+	font-weight: bold;
+}
+
+/**
+ * Tablet Large 880px
+ */
+@media screen and (min-width: 55em) {
+
+	#wc_confirm #cart-table tr {
+		border: none;
+	}
+
+	#wc_confirm #cart-table tbody tr:last-child {
+		border-bottom: 1px solid #ddd;
+	}
+
+	#wc_confirm #cart-table td.msa-destination {
+		white-space: nowrap;
+	}
+
+	#wc_confirm #cart-table td.msa-destination,
+	#wc_confirm #cart-table td.msa-postage-title,
+	#wc_confirm #cart-table td.msa-postage-detail {
+		display: table-cell;
+		padding-bottom: 6px;
+		border-bottom: 2px dotted #ddd;
+	}
+
+	#wc_confirm #cart-table td.msa-postage-title,
+	#wc_confirm #cart-table td.msa-postage-detail {
+		margin: 0;
+		padding-top: 18px;
+		float: none;
+		text-align: right;
+	}
+
+	#wc_confirm #cart-table td.msa-postage-title::after {
+		margin: 0 0 0 12px;
+	}
+
+	#wc_confirm #cart-table td.msa-postage-detail {
+		padding-right: 24px;
+	}
+
+
+}
+
+
+/* = Member Page
+-------------------------------------------------------------- */
+#memberinfo a.usces_logout_a {
+	margin-top: 0;
+}
+
+.return_navi {
+	position: inherit;
+	top: inherit;
+	right: inherit;
+	margin-top: 10px;
+}
+
+#new_destination,
+#memberinfo .msa_area .return_navi a {
+	width: 100%;
+	text-align: center;
+}
+
+#new_destination {
+	height: 46px;
+	margin: 10px 0 0;
+	padding: 0 20px;
+	border-radius: 4px;
+	line-height: 46px;
+}
+
+#memberinfo .msa_area .return_navi a {
+	border: #0074a2 1px solid;
+	color: #fff;
+}
+
+.return_navi a {
+	width: 100%;
+	height: 46px;
+	margin: 0;
+	padding: 0 20px;
+	border: inherit;
+	border-radius: 4px;
+	line-height: 46px;
+	text-align: center;
+}
+
+.msa_operation label {
+	display: block;
+}
+
+.msa_operation #destination {
+	margin: 0;
+	padding: 0 36px 0 12px;
+}
+
+.msa_field {
+	padding: 0;
+	border-top: inherit;
+	background: none;
+	font-size: 12px;
+}
+
+.msa_title::after,
+.msa_field::after {
+	content: "";
+	display: block;
+	width: calc(100% - 12px);
+	height: 1px;
+	margin: 12px auto;
+}
+
+.msa_field label {
+	display: block;
+	width: 100%;
+	margin: 0 0 4px;
+	padding: 0;
+	font-size: 12px;
+}
+
+.msa_field textarea,
+.msa_field input[type="text"] {
+	margin: 0;
+	vertical-align: middle;
+}
+
+.msa_field #msa_company,
+.msa_field #msa_address1,
+.msa_field #msa_address2,
+.msa_field #msa_address3,
+.msa_field #msa_note {
+	width: 100%;
+}
+
+.msa_field #msa_name,
+.msa_field #msa_name2,
+.msa_field #msa_furigana,
+.msa_field #msa_furigana2 {
+	width: 43%;
+	margin: 0 .5em;
+}
+
+.msa_field #msa_name2,
+.msa_field #msa_furigana2 {
+	margin-right: 0;
+}
+
+.msa_field #msa_zip {
+	width: 135px;
+	margin-right: 12px;
+}
+
+.msa_field .search-zipcode {
+	margin-right: 12px;
+	padding: 5px 8px;
+	border-radius: 4px;
+	background: #aaa;
+	color: #fff;
+	font-size: 13px;
+}
+
+/* -- #wc_member_msa -- */
+#wc_member_msa h3 {
+	font-size: 15px;
+}
+
+#wc_member_msa .msa_title {
+	margin-bottom: 0;
+}
+
+#wc_member_msa table {
+	display: block;
+	width: 100%;
+	margin-bottom: .714286em;
+	border: none;
+}
+
+#wc_member_msa table tbody,
+#wc_member_msa table tr {
+	display: block;
+}
+
+#wc_member_msa table th {
+	display: block;
+	font-size: 12px;
+	text-align: left;
+}
+
+#wc_member_msa table td {
+	display: block;
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+#wc_member_msa table th.space,
+#wc_member_msa table td.space {
+	display: none;
+}
+
+#msa_button {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	border-top: inherit;
+}
+
+#msa_button input {
+	display: block;
+	width: 100%;
+	height: 46px;
+	margin: 0;
+	padding: 0 20px;
+	border: none;
+	border-radius: 4px;
+	line-height: 46px;
+}
+
+#msa_button input#cancel_destination,
+#msa_button input#del_destination {
+	margin-top: 8px;
+}
+
+.msa_field select {
+	margin: inherit;
+}
+
+.msa_area textarea,
+.msa_area input[type="text"],
+.msa_area select {
+	padding: 0 36px 0 12px;
+}
+
+
+/**
+ * Mobile Large 620px
+ */
+@media screen and (min-width: 38.75em) {
+}
+
+/**
+ * Tablet Small 740px
+ */
+@media screen and (min-width: 46.25em) {
+}
+
+/**
+ * Tablet Large 880px
+ */
+@media screen and (min-width: 55em) {
+
+
+	/* = Common
+	---------------------------------------------------------- */
+	.go_destination,
+	.go_destination a,
+	#new_alloc_button,
+	#memberinfo .msa_area .return_navi a,
+	.msa_operation label,
+	.msa_field label {
+		display: inline-block;
+	}
+
+	.msa_table .msa_thumb,
+	#wc_confirm #cart_table .num {
+		display: table-cell;
+	}
+
+	.go_destination a,
+	#new_alloc_button,
+	input[type="button"].allocation_edit_button,
+	.destination_area .edit_button_area,
+	#new_destination,
+	#memberinfo .msa_area .return_navi a {
+		width: auto;
+	}
+
+	.msa_table .msa_thumb img {
+		height: auto;
+	}
+
+	/* = Dialog
+	---------------------------------------------------------- */
+
+	.ui-dialog.allocation #allocation_dialog {
+		padding: 20px 20px 0;
+	}
+
+	.ui-dialog.allocation {
+		top: 50%;
+		width: 600px !important;
+		max-height: 600px;
+		overflow-y: scroll;
+	}
+
+	.go_destination {
+		margin-right: 1em;
+	}
+
+	.go_destination a {
+		border: none;
+	}
+
+	#new_alloc_button {
+		padding: 0 20px;
+		border: none;
+		line-height: 32px;
+	}
+
+	.allocation_dialog_exp {
+		margin-top: 0;
+	}
+
+	.destination_area {
+		overflow: hidden;
+	}
+
+	.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button {
+		width: auto;
+	}
+
+	.destination_area .destination_name {
+		width: 50%;
+		height: 32px;
+		float: left;
+		overflow: hidden;
+		line-height: 32px;
+	}
+
+	.destination_area .edit_button_area {
+		float: right;
+	}
+
+	.msa_table th,
+	.msa_table td {
+		padding: .5em;
+	}
+
+	.destination_area .destination_name,
+	.destination_area .edit_button_area {
+		margin-bottom: 0;
+	}
+
+	/* = Member Page
+	---------------------------------------------------------- */
+	.msa_area .msa_total {
+		margin-bottom: 20px;
+	}
+
+	#new_destination {
+		margin: 0 0 0 1em;
+		vertical-align: middle;
+	}
+
+	.return_navi {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin-top: 0;
+	}
+
+	#memberinfo .msa_area .return_navi a {
+		padding: .53em 1.42857em;
+	}
+
+	.msa_operation #destination {
+		width: 60%;
+		margin-left: 10px;
+	}
+
+	.msa_field {
+		border-top: none;
+		border-bottom-width: 1px;
+	}
+
+	.msa_field label {
+		width: 25%;
+	}
+
+	.msa_field select {
+		width: auto;
+		margin: 0;
+	}
+
+	.msa_field #msa_company,
+	.msa_field #msa_address1,
+	.msa_field #msa_address2,
+	.msa_field #msa_address3,
+	.msa_field #msa_tel,
+	.msa_field #msa_fax,
+	.msa_field #msa_note {
+		width: 75%;
+	}
+
+	.msa_field #msa_name,
+	.msa_field #msa_name2,
+	.msa_field #msa_furigana,
+	.msa_field #msa_furigana2 {
+		width: 30%;
+	}
+
+
+	/* = Member Page
+	---------------------------------------------------------- */
+	.msa_operation #destination {
+		width: auto;
+	}
+
+	#wc_member_msa h3 {
+		margin-bottom: 36px;
+		font-size: 22px;
+	}
+
+	#wc_member_msa table {
+		display: table;
+		width: 100%;
+	}
+
+	#wc_member_msa table tbody {
+		display: table-row-group;
+	}
+
+	#wc_member_msa table tr {
+		display: table-row;
+		width: 100%;
+	}
+
+	#wc_member_msa table th,
+	#wc_member_msa table td {
+		display: table-cell;
+	}
+
+	#wc_member_msa table th {
+		font-size: 13px;
+	}
+
+	#wc_member_msa table th,
+	#wc_member_msa table td {
+		padding: 24px 0;
+		border-bottom: 1px solid #e8e8e8;
+	}
+
+	#wc_member_msa table th {
+		width: 190px;
+		font-size: 14px;
+	}
+
+	#wc_member_msa table tr:first-child th,
+	#wc_member_msa table tr:first-child td {
+		padding-top: 0;
+	}
+
+	#wc_member_msa .msa_field {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	#wc_member_msa .msa_field label {
+		font-size: 14px;
+	}
+
+	.msa_title::after,
+	.msa_field::after {
+		margin: 24px 0;
+	}
+
+	#msa_button input {
+		width: auto;
+		padding: 0 40px;
+	}
+
+	#msa_button input#cancel_destination,
+	#msa_button input#del_destination {
+		margin: 0 0 0 8px;
+	}
+
+}
+
+
+/**
+ * 16.3 Tablet Large 1000px
+ */
+@media screen and (min-width: 62.5em) {
+
+	#determine:hover,
+	#new_alloc_button:hover,
+	input[type="button"].allocation_edit_button:hover {
+		border-color: #ffa500;
+		background-color: #ffa500;
+	}
+}

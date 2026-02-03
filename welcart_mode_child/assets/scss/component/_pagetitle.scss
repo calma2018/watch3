@@ -1,0 +1,67 @@
+@use "../global" as *;
+
+.c-pagetitle {
+  position: relative;
+  width: 100%;
+  background-color: $Gray_pale;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  @include pc {
+    height: 40rem;
+    margin-bottom: 10rem;
+    padding-top: 7rem;
+  }
+  @include sp {
+    height: 30rem;
+    margin-bottom: 6rem;
+    padding-top: 5rem;
+  }
+}
+
+.c-pagetitle__txt {
+  position: relative;
+  &_en {
+    display: block;
+    font-size: 8.4rem;
+    font-weight: 400;
+    line-height: 0.9;
+    font-family: $font_en;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    letter-spacing: -0.02em;
+    @include sp {
+      font-size: 4rem;
+    }
+  }
+  &_ja {
+    display: block;
+    position: relative;
+    margin-top: 0.3rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: center;
+    @include sp {
+      font-size: 1.3rem;
+      margin-top: 0;
+    }
+  }
+}
+
+.c-pagetitle__logo {
+  width: 100%;
+  text-align: center;
+
+  &_heritage {
+    @include pc {
+      height: 12.6rem;
+      width: auto;
+    }
+    @include sp {
+      width: 60vw;
+      height: auto;
+    }
+  }
+}

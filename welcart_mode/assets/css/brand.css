@@ -1,0 +1,170 @@
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	page-templates/brand.php
+/* -------------------------------------------------------------------------- */
+
+.brand-list .list {
+	margin-bottom: 12px;
+}
+.brand-list .list:last-child {
+	margin-bottom: 0;
+}
+.brand-list .list a {
+	display: flex;
+	flex-wrap: wrap;;
+}
+.brand-list .list .img {
+	margin-right: 12px;
+	display: inline-block;
+	width: 120px;
+}
+.brand-list .list .info {
+	width: calc( 100% - 132px );
+}
+.brand-list .list .name {
+	font-weight: 700;
+}
+.brand-list .list .name-sub {
+	color: #aaa;
+	font-size: 13px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	taxonomy-brand.php
+/* -------------------------------------------------------------------------- */
+
+.tax-info .entry-head.title-small h1.en {
+	display: block;
+	font-size: 20px;
+	font-weight: 700;
+}
+.tax-info .entry-head.title-small .sub {
+	display: inline-block;
+	margin-top: 8px;
+	font-size: 11px;
+	font-weight: normal;
+}
+.tax-info .entry-head.default h1.en {
+	display: block;
+	font-size: 18px;
+	font-weight: 700;
+}
+.brand-img {
+	margin: -24px -1em 24px;
+	text-align: center;
+}
+.brand-description {
+	margin: -12px 0 24px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid #eee;
+}
+.brand-info .headline {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+
+
+/**
+ * 16.3 Tablet Large 880px
+ */
+@media screen and (min-width: 55em) {
+
+
+	/* -------------------------------------------------------------------------- */
+
+	/*	page-templates/brand.php
+	/* -------------------------------------------------------------------------- */
+
+	.brand-list {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.brand-list .list {
+		margin-right: 24px;
+		width: calc( 33.333% - 16px );
+	}
+	.brand-list .list:nth-child( 3n ) {
+		margin-right: 0;
+	}
+	.brand-list .list:nth-child( n+4 ) {
+		margin-top: 24px;
+	}
+
+
+	/* -------------------------------------------------------------------------- */
+
+	/*	taxonomy-brand.php
+	/* -------------------------------------------------------------------------- */
+
+	.term-info .entry-head h1.en,
+	.tax-info .entry-head.title-small h1.en {
+		font-size: 28px;
+	}
+	.term-info .entry-head .sub,
+	.tax-info .entry-head.title-small .sub {
+		margin-top: 12px;
+		font-size: 14px;
+	}
+	.tax-info .entry-head.default h1.en {
+		font-size: 24px;
+	}
+	/* -------------------------------------------------------------------------- */
+
+	/*	5. Category
+	/* -------------------------------------------------------------------------- */
+
+	/*  a. Common
+	----------------------------------------*/
+
+	/* ---- .list-info ---- */
+
+	.brand-description {
+		margin-bottom: 60px;
+		padding-bottom: 36px;
+		line-height: 1.8;
+	}
+
+	/* ---- .brand-info ---- */
+
+	.brand-info {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.brand-info .headline {
+		order: 2;
+		margin-bottom: 48px;
+		width: 33.333%;
+		font-size: 20px;
+	}
+	.brand-info .count-items {
+		order: 1;
+		text-align: left;
+		width: 33.333%;
+	}
+	.brand-info .count-items span {
+		font-size: 24px;
+	}
+	.brand-info .inbox {
+		display: flex;
+		order: 3;
+		width: 33.333%;
+		justify-content: flex-end;
+	}
+	.brand-info .pages-info {
+		margin: 3px 15px 0 0;
+	}
+
+	/* -------- .pagination -------- */
+
+	.pagination-wrap.top {
+		margin-bottom: 0;
+	}
+
+}

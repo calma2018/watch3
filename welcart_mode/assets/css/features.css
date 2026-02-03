@@ -1,0 +1,131 @@
+
+/* -------------------------------------------------------------------------- */
+
+/*	Archives
+/* -------------------------------------------------------------------------- */
+
+.features-block {
+	position: relative;
+	margin-bottom: 40px;
+}
+.features-block:last-child {
+	margin-bottom: 0;
+	border-bottom: none;
+}
+.features-block .entryfoot .more {
+    position: absolute;
+    top: -3px;
+    right: 0;
+}
+.features-block .entryfoot .more a {
+	display: inline-block;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+.features-block .entryfoot .more a:hover {
+	border-bottom: none;
+}
+.features-block .entryfoot .more a img {
+	display: none;
+	width: 20px;
+	height: auto;
+}
+.features-block .sub-header {
+	margin: 0 0 20px;
+}
+.features-block .sub-header .sub-title {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+/*  .type-features 
+----------------------------------------*/
+
+.type-features .eyecatch {
+	margin: 0 -1em 30px;
+}
+.type-features .eyecatch a {
+	display: block;
+}
+.type-features .entry-header {
+	margin: 0 0 30px;
+}
+.type-features .entry-header .entry-title {
+	font-size: 138%;
+	display: inline;
+	margin-right: .6em;
+}
+.type-features .entry-header .data {
+	font-size: 92.3%;
+	display: inline;
+}
+.type-features .entry-header .tag {
+	display: flex;
+	width: 100%;
+	margin-top: 16px;;
+}
+.type-features .entry-header .tag span {
+	background-color: #ebebeb;
+	padding: 5px 7px;
+	color: #777;
+	display: block;
+	margin: 0 10px 0 0;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 76.9%;
+	line-height: 1.2;;
+}
+
+
+/**
+ * 16.1 Mobile Large 620px
+ */
+@media screen and (min-width: 38.75em) {
+
+
+	/* -------------------------------------------------------------------------- */
+
+	/*	Archives
+	/* -------------------------------------------------------------------------- */
+
+	.features-block .entryfoot .more .label {
+		display: block;
+		margin-bottom: 5px;
+		line-height: 1.2;
+	}
+
+
+}
+
+
+@media screen and (min-width: 55em) {
+
+	.features-block {
+		margin-bottom: 90px;
+	}
+	.list-info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 24px;
+	}
+	.list-info .inbox {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.count-items {
+		text-align: left;
+	}
+	.pages-info {
+		margin-bottom: 0;
+		margin-right: 1rem;
+	}
+	.new-old {
+		margin-top: 0;
+	}
+
+}

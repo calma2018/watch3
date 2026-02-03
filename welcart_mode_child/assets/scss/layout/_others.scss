@@ -1,0 +1,15 @@
+@use "../global" as *;
+
+.shopping-navigation .membership {
+  display: none;
+}
+
+.drawer-menu-sp .global-navigation {
+  display: none;
+}
+
+.footer-group .in {
+  @include sp {
+    padding-bottom: 130px;
+  }
+}
