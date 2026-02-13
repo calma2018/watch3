@@ -539,3 +539,305 @@ function mode_coordinate_title_output( $title ) {
 	return $title;
 }
 add_filter( 'document_title_parts', 'mode_coordinate_title_output' );
+
+
+/**
+ * Welcart 商品並び替え（ページング対応）
+ * - 販売中（在庫あり）→ 売切（在庫なし）
+ * - 各グループ内は更新日DESC
+ * - 対象：category「item」配下すべて / brand タクソノミー / トップの10件表示（非メインクエリ）にも対応
+ */
+
+
+/**
+ * 在庫判定（Welcartテンプレ関数を利用）
+ */
+function calma_welcart_has_stock($post_id) {
+
+  global $post;
+
+  $old_post = $post;
+  $post = get_post($post_id);
+  if (! $post) return false;
+
+  setup_postdata($post);
+
+  ob_start();
+  if (function_exists('usces_the_item'))  usces_the_item();
+  if (function_exists('usces_have_skus')) usces_have_skus();
+  $has_stock = function_exists('usces_have_zaiko') ? usces_have_zaiko() : false;
+  ob_end_clean();
+
+  wp_reset_postdata();
+  $post = $old_post;
+
+  return (bool) $has_stock;
+}
+
+
+/**
+ * 「itemカテゴリ配下か？」判定
+ * - メインクエリ（カテゴリページ）: is_category() から判定
+ * - 非メインクエリ（トップのウィジェット等）: query vars (category_name / cat) から判定
+ */
+function calma_query_is_item_tree($q) {
+
+  // 1) カテゴリアーカイブ（メインクエリ想定）
+  if ($q->is_category()) {
+    $term = get_queried_object();
+    if ($term && isset($term->term_id, $term->taxonomy) && $term->taxonomy === 'category') {
+      if ($term->slug === 'item') return true;
+
+      $ancestors = get_ancestors($term->term_id, 'category');
+      if (!empty($ancestors)) {
+        foreach ($ancestors as $aid) {
+          $a = get_term($aid, 'category');
+          if ($a && !is_wp_error($a) && $a->slug === 'item') return true;
+        }
+      }
+    }
+  }
+
+  // 2) 非メインクエリ（ウィジェット等）
+  // category_name が item を含むか（"item" や "item,itemused" など）
+  $cat_name = (string) $q->get('category_name');
+  if ($cat_name !== '') {
+    $parts = array_filter(array_map('trim', explode(',', $cat_name)));
+    if (in_array('item', $parts, true)) return true;
+
+    // "itemused" などが item の子かどうかを祖先で判定
+    foreach ($parts as $slug) {
+      $t = get_term_by('slug', $slug, 'category');
+      if ($t && !is_wp_error($t)) {
+        if ($t->slug === 'item') return true;
+        $ancestors = get_ancestors($t->term_id, 'category');
+        if (!empty($ancestors)) {
+          foreach ($ancestors as $aid) {
+            $a = get_term($aid, 'category');
+            if ($a && !is_wp_error($a) && $a->slug === 'item') return true;
+          }
+        }
+      }
+    }
+  }
+
+  // cat（カテゴリID）指定
+  $cat_id = (int) $q->get('cat');
+  if ($cat_id) {
+    $t = get_term($cat_id, 'category');
+    if ($t && !is_wp_error($t)) {
+      if ($t->slug === 'item') return true;
+      $ancestors = get_ancestors($t->term_id, 'category');
+      if (!empty($ancestors)) {
+        foreach ($ancestors as $aid) {
+          $a = get_term($aid, 'category');
+          if ($a && !is_wp_error($a) && $a->slug === 'item') return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+
+/**
+ * 並び替えID取得：現在のクエリ条件（カテゴリ or brand）に合わせて全IDを取って並べる
+ * ※10件表示でもOK（WPがpost__in順でLIMITする）
+ */
+function calma_get_sorted_ids_for_query($q) {
+
+  // キャッシュキー（サイト/条件ごと）
+  $key_seed = home_url() . '|';
+  if ($q->is_tax('brand')) {
+    $key_seed .= 'brand:' . (int) get_queried_object_id();
+  } elseif ($q->is_category()) {
+    $key_seed .= 'cat:' . (int) get_queried_object_id();
+  } else {
+    // 非メインクエリ用（category_name / cat）
+    $key_seed .= 'q:' . serialize([
+      'category_name' => (string) $q->get('category_name'),
+      'cat'           => (int) $q->get('cat'),
+    ]);
+  }
+
+  $cache_key = 'calma_sorted_ids_v3_' . md5($key_seed);
+  $cached = get_transient($cache_key);
+  if ($cached !== false) return $cached;
+
+  $args = [
+    'post_type'      => 'post',
+    'posts_per_page' => -1,
+    'fields'         => 'ids',
+    'orderby'        => 'modified',
+    'order'          => 'DESC',
+    'no_found_rows'  => true,
+  ];
+
+  // ブランドページ（メインクエリ）
+  if ($q->is_tax('brand')) {
+    $term = get_queried_object();
+    if ($term && isset($term->taxonomy, $term->term_id)) {
+      $args['tax_query'] = [
+        [
+          'taxonomy' => $term->taxonomy,
+          'field'    => 'term_id',
+          'terms'    => [$term->term_id],
+        ]
+      ];
+    }
+  }
+  // カテゴリページ（メインクエリ）
+  elseif ($q->is_category()) {
+    $args['cat'] = (int) get_queried_object_id();
+  }
+  // 非メインクエリ（トップ等）
+  else {
+    $cat_name = (string) $q->get('category_name');
+    $cat_id   = (int) $q->get('cat');
+
+    if ($cat_name !== '') $args['category_name'] = $cat_name;
+    if ($cat_id) $args['cat'] = $cat_id;
+
+    // もしトップが「商品だけ」なら、ここで item も付け足したい場合：
+    // $args['category_name'] = $args['category_name'] ? ($args['category_name'] . ',item') : 'item';
+  }
+
+  $ids = get_posts($args);
+  if (empty($ids)) {
+    set_transient($cache_key, [], 10 * MINUTE_IN_SECONDS);
+    return [];
+  }
+
+  // 在庫あり/なし
+  $avail = [];
+  foreach ($ids as $id) {
+    $avail[$id] = calma_welcart_has_stock($id) ? 1 : 0;
+  }
+
+  // 在庫あり→なし、同グループ内は更新日DESC
+  usort($ids, function($a, $b) use ($avail) {
+
+    $ai = $avail[$a] ?? 0;
+    $bi = $avail[$b] ?? 0;
+
+    if ($ai !== $bi) return $bi <=> $ai;
+
+    $am = get_post_modified_time('U', true, $a);
+    $bm = get_post_modified_time('U', true, $b);
+    return $bm <=> $am;
+  });
+
+  set_transient($cache_key, $ids, 10 * MINUTE_IN_SECONDS);
+  return $ids;
+}
+
+
+/**
+ * メインクエリ（カテゴリ/ブランド）のソート
+ */
+add_action('pre_get_posts', function($q) {
+
+  if (is_admin()) return;
+  if (! $q->is_main_query()) return;
+
+  // 対象：item配下カテゴリ OR brand
+  if (!calma_query_is_item_tree($q) && ! $q->is_tax('brand')) return;
+
+  if (!function_exists('usces_the_item') || !function_exists('usces_have_skus') || !function_exists('usces_have_zaiko')) return;
+
+  $ids = calma_get_sorted_ids_for_query($q);
+  if (empty($ids)) return;
+
+  $q->set('post__in', $ids);
+  $q->set('orderby', 'post__in');
+  $q->set('order', 'ASC');
+
+}, 20);
+
+
+/**
+ * トップページの「非メインクエリ」（ウィジェット等）にも適用
+ * ※ここが今回のキモ：トップの10件が戻ったのは main_query 限定だったから
+ */
+add_action('pre_get_posts', function($q) {
+
+  if (is_admin()) return;
+
+  // トップだけに限定（不要なら外してOK）
+  if (! (is_front_page() || is_home())) return;
+
+  // item配下を対象
+  if (! calma_query_is_item_tree($q)) return;
+
+  if (!function_exists('usces_the_item') || !function_exists('usces_have_skus') || !function_exists('usces_have_zaiko')) return;
+
+  $ids = calma_get_sorted_ids_for_query($q);
+  if (empty($ids)) return;
+
+  $q->set('post__in', $ids);
+  $q->set('orderby', 'post__in');
+  $q->set('order', 'ASC');
+
+}, 20);
+
+
+/**
+ * 商品更新時にキャッシュを早めに切り替えたい場合（任意）
+ * すぐ反映が必要なら有効化
+ */
+add_action('save_post', function($post_id){
+  if (wp_is_post_revision($post_id)) return;
+  // 個別キー方式なので、期限(10分)運用でもOK。即時反映したいなら別途一括削除の仕組みに。
+}, 10);
+
+
+/**
+ * ウィジェット用：指定条件の投稿IDを
+ * 在庫あり→売切、各グループ内 更新日DESC で並べたID配列を返す
+ */
+function calma_get_sorted_ids_from_args($base_args) {
+
+  if (!function_exists('usces_the_item') || !function_exists('usces_have_skus') || !function_exists('usces_have_zaiko')) {
+    return [];
+  }
+
+  // posts_per_page は全件取得に差し替え（IDだけ欲しい）
+  $args = $base_args;
+  $args['posts_per_page'] = -1;
+  $args['fields']         = 'ids';
+  $args['orderby']        = 'modified';
+  $args['order']          = 'DESC';
+  $args['no_found_rows']  = true;
+
+  $cache_key = 'calma_widget_sorted_' . md5(home_url() . '|' . serialize($args));
+  $cached = get_transient($cache_key);
+  if ($cached !== false) return $cached;
+
+  $ids = get_posts($args);
+  if (empty($ids)) {
+    set_transient($cache_key, [], 5 * MINUTE_IN_SECONDS);
+    return [];
+  }
+
+  $avail = [];
+  foreach ($ids as $id) {
+    $avail[$id] = calma_welcart_has_stock($id) ? 1 : 0;
+  }
+
+  usort($ids, function($a, $b) use ($avail){
+    $ai = $avail[$a] ?? 0;
+    $bi = $avail[$b] ?? 0;
+
+    // 在庫あり優先
+    if ($ai !== $bi) return $bi <=> $ai;
+
+    // 同グループ内：更新日DESC
+    $am = get_post_modified_time('U', true, $a);
+    $bm = get_post_modified_time('U', true, $b);
+    return $bm <=> $am;
+  });
+
+  set_transient($cache_key, $ids, 5 * MINUTE_IN_SECONDS);
+  return $ids;
+}
