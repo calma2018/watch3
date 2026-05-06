@@ -98,3 +98,393 @@
 	}
 
 }
+
+
+
+/* ================================
+   Contact Modal
+================================ */
+/* モーダル表示中はスクロール止める */
+html.is-modal-open,
+html.is-modal-open body {
+	overflow: hidden;
+}
+
+.p-itemContact__single {
+	margin-top: 16px;
+}
+
+.p-itemContact__openModal {
+	width: 100%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px 12px;
+	border: 0;
+	border-radius: 6px;
+	cursor: pointer;
+	background-image: linear-gradient(to right, #847655, #554c37) !important;
+	color: #fff;
+	font-size: 16px;
+}
+
+/* overlay */
+.c-modalOverlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, .55);
+	z-index: 9998;
+}
+
+/* modal */
+.c-modal {
+	position: fixed;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	z-index: 9999;
+	padding: 16px;
+}
+
+.c-modal__inner {
+	width: min(920px, calc(100vw - 32px));
+	max-height: calc(100dvh - 32px);
+	/* iPhone対策で dvh */
+	overflow: auto;
+	/* ← モーダル内スクロール */
+	-webkit-overflow-scrolling: touch;
+	/* iOSでヌルヌル */
+	background: #fff;
+	border-radius: 16px;
+	position: relative;
+}
+
+.c-modal__close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-radius: 999px;
+	cursor: pointer;
+	font-size: 22px;
+	line-height: 1;
+}
+
+.c-modal__title {
+	margin: 0 16px;
+	font-size: 18px;
+	text-align: center;
+	padding-top: 1rem;
+}
+
+/* cards */
+.c-modal__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 14px;
+}
+
+.c-modalCard {
+	border: 1px solid rgba(0, 0, 0, .12);
+	border-radius: 10px;
+	padding: 12px;
+}
+
+.c-modalCard--wide {
+	grid-column: 1 / -1;
+}
+
+.c-modalCard__head {
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.c-modalCard__qr {
+	display: grid;
+	place-items: center;
+	margin-bottom: 10px;
+}
+
+.c-modalCard__qr img {
+	max-width: 180px;
+	height: auto;
+}
+
+.c-modalCard__btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 10px;
+	border-radius: 8px;
+	text-decoration: none;
+	color: #fff;
+	background-image: linear-gradient(to right, #847655, #554c37) !important;
+}
+
+.c-modalCard__btn.is-disabled {
+	opacity: .55;
+	pointer-events: none;
+}
+
+.c-modalCard__note {
+	margin-top: 8px;
+	font-size: 12px;
+	opacity: .75;
+	text-align: center;
+}
+
+/* responsive */
+@media (max-width: 860px) {
+	.c-modal__grid {
+		grid-template-columns: 1fr;
+	}
+
+	.c-modalCard--wide {
+		grid-column: auto;
+	}
+		.c-modalCard__qr {
+			display: none;
+		}
+		.c-modalCard__head {
+			display: none;
+		}
+		.c-modal__title {
+			font-size: 14px;
+		}
+}
+
+.c-modal[hidden],
+.c-modalOverlay[hidden] {
+	display: none !important;
+}
+
+
+/* フローティングカート */
+.c-floatingCart {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 12px;
+	z-index: 99999;
+	transform: translateY(110%);
+	transition: transform .25s;
+}
+
+.c-floatingCart.is-show {
+	transform: translateY(0);
+}
+
+.c-floatingCart__inner {
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.c-floatingCart__btn {
+	width: 100%;
+	padding: 14px 16px;
+	border: 0;
+	border-radius: 8px;
+	background-color: #006095;
+	color: #fff;
+	font-size: 18px;
+}
+
+@media screen and (max-width:767px) {
+	.c-floatingCart__btn {
+			width: 60%;
+		}
+}
+
+/* ランク内モーダルCSS */
+.p-itemSpec__desc--rank {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+/* ランク説明リンク */
+.p-itemSpec__rankHelpText {
+	background: none;
+	border: none;
+	padding: 0;
+	font-size: 0.8rem;
+	color: #8f7d57;
+	/* ゴールド系 */
+	cursor: pointer;
+	text-decoration: underline;
+	line-height: 1.4;
+}
+
+.p-itemSpec__rankHelpText:hover {
+	color: #6f6149;
+	text-decoration: none;
+}
+.p-itemSpec__rankValue::after {
+	content: "｜";
+	margin: 0 6px;
+	color: #ccc;
+}
+
+.p-rankModal[hidden] {
+	display: none !important;
+}
+
+.p-rankModal {
+	position: fixed;
+	inset: 0;
+	z-index: 10000;
+}
+
+.p-rankModal__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.p-rankModal__dialog {
+	position: relative;
+	width: min(92vw, 640px);
+	max-height: calc(100vh - 60px);
+	margin: 30px auto;
+	background: #fff;
+	border-radius: 16px;
+	padding: 28px 24px 24px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+	overflow-y: auto;
+	z-index: 1;
+}
+
+.p-rankModal__close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	border: 0;
+	background: transparent;
+	font-size: 2.4rem;
+	line-height: 1;
+	cursor: pointer;
+	color: #333;
+}
+
+.p-rankModal__title {
+	margin: 0 0 20px;
+	font-size: 2rem;
+	font-weight: 700;
+	color: #222;
+}
+
+.p-rankGuide {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.p-rankGuide__item {
+	display: grid;
+	grid-template-columns: 54px 1fr;
+	gap: 14px;
+	align-items: flex-start;
+	padding: 14px 0;
+	border-top: 1px solid #ece7dc;
+}
+
+.p-rankGuide__item:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.p-rankGuide__badge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 54px;
+	height: 54px;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1;
+	flex-shrink: 0;
+}
+
+.p-rankGuide__badge--n {
+	background: #cb6d79;
+}
+
+.p-rankGuide__badge--s {
+	background: #c79a53;
+}
+
+.p-rankGuide__badge--a {
+	background: #97a85f;
+}
+
+.p-rankGuide__badge--b {
+	background: #6f97b5;
+}
+
+.p-rankGuide__badge--c {
+	background: #8b8aa1;
+}
+
+.p-rankGuide__name {
+	margin: 0 0 6px;
+	font-size: 1.7rem;
+	font-weight: 700;
+	line-height: 1.5;
+	color: #111;
+}
+
+.p-rankGuide__text {
+	margin: 0;
+	font-size: 1.45rem;
+	line-height: 1.8;
+	color: #333;
+}
+
+.is-rankModal-open {
+	overflow: hidden;
+}
+
+@media (max-width: 767px) {
+	.p-rankModal__dialog {
+		width: calc(100vw - 24px);
+		max-height: calc(100vh - 24px);
+		margin: 12px auto;
+		padding: 24px 16px 18px;
+		border-radius: 12px;
+	}
+
+	.p-rankModal__title {
+		font-size: 1.4rem;
+		margin-bottom: 16px;
+	}
+
+	.p-rankGuide__item {
+		grid-template-columns: 44px 1fr;
+		gap: 4px;
+		padding: 8px 0;
+	}
+
+	.p-rankGuide__badge {
+		width: 30px;
+		height: 30px;
+		font-size: 1rem;
+	}
+
+	.p-rankGuide__name {
+		font-size: 1rem;
+		margin-bottom: 4px !important;
+	}
+
+	.p-rankGuide__text {
+		font-size: 1rem;
+		line-height: 1.7;
+		margin-bottom: 4px !important;
+	}
+}

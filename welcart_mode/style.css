@@ -2200,3 +2200,137 @@ input.open-check {
 
 
 }
+
+
+/* 通常価格表示 */
+.price--stack {
+	display: flex;
+	flex-direction: column;
+	gap: .3rem;
+}
+
+.price__label {
+	font-size: .85rem;
+	margin-right: .3rem;
+	opacity: .8;
+}
+
+.price__regular del {
+	opacity: .6;
+}
+
+.price__sale {
+	font-weight: 700;
+}
+
+
+
+
+/* Google翻訳：中身が潰される対策 */
+.p-translateFixed {
+	position: fixed !important;
+	right: 16px;
+	bottom: 16px;
+	z-index: 2147483647 !important;
+	transform: translateZ(0);
+	/* Safari対策 */
+}
+
+.p-translateFixed .goog-te-gadget,
+.p-translateFixed .goog-te-gadget-simple {
+	display: inline-block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	height: auto !important;
+	overflow: visible !important;
+}
+
+/* SIMPLEレイアウトの見た目が崩れて0幅になるの防止 */
+.p-translateFixed .goog-te-gadget-simple {
+	white-space: nowrap !important;
+}
+
+.p-translateFixed .goog-te-gadget,
+.p-translateFixed .goog-te-gadget-simple {
+	display: inline-block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	height: auto !important;
+	overflow: visible !important;
+}
+
+/* SIMPLEレイアウトの見た目が崩れて0幅になるの防止 */
+.p-translateFixed .goog-te-gadget-simple {
+	white-space: nowrap !important;
+}
+
+.drawe-bg-sp,
+.drawe-bg-pc {
+	pointer-events: none;
+	/* 背景ならクリックを奪わない */
+}
+
+/* 強制的に見えるようにする（デバッグ用） */
+.p-translateFixed {
+	position: fixed !important;
+	right: 16px !important;
+	bottom: 16px !important;
+	z-index: 2147483647 !important;
+	background: #847655 !important;
+	padding: 10px !important;
+}
+
+
+.p-translateFixed * {
+	pointer-events: auto;
+}
+
+@media (max-width: 767px) {
+	.p-translateFixed {
+			left: 12px !important;
+			right: auto !important;
+			bottom: calc(var(--floating-cart-h, 64px) + 12px + env(safe-area-inset-bottom)) !important;
+			max-width: calc(100vw - 24px) !important;
+		}
+}
+
+
+
+.field_price {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 8px 14px;
+}
+
+.field_cprice_wrap,
+.field_price_wrap {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 6px;
+}
+
+.field_price_label {
+	font-size: 1.0rem;
+	font-weight: 700;
+	line-height: 1;
+	color: #333;
+}
+
+.field_cprice {
+	font-size: 1.4rem;
+	color: #999;
+	text-decoration: line-through;
+}
+
+.field_price_main {
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1;
+	color: #222;
+}
+
+.field_price_wrap .tax,
+.field_price_wrap .d-tax {
+	font-size: 1.3rem;
+}

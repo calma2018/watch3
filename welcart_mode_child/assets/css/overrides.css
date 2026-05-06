@@ -1155,9 +1155,9 @@ article.is-item-soldout .price {
 /* ===============================================
    p-itemContact（商品ページお問い合わせブロック）
    =============================================== */
-.post.is-item-soldout:not(.category-backorder) .p-itemContact {
+/* .post.is-item-soldout:not(.category-backorder) .p-itemContact {
   display: none;
-}
+} */
 
 .post.category-backorder .itemsoldout {
   display: none;

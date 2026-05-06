@@ -641,9 +641,12 @@ function calma_query_is_item_tree($q) {
 }
 
 
+// ここから追記
 /**
  * 並び替えID取得：現在のクエリ条件（カテゴリ or brand）に合わせて全IDを取って並べる
- * ※10件表示でもOK（WPがpost__in順でLIMITする）
+ * - 在庫あり → 在庫なし
+ * - 各グループ内：更新日DESC
+ * ※除外条件（Hamilton/backorder など）はここでは一切しない（ページごとに必要なら呼び出し側で）
  */
 function calma_get_sorted_ids_for_query($q) {
 
@@ -654,14 +657,13 @@ function calma_get_sorted_ids_for_query($q) {
   } elseif ($q->is_category()) {
     $key_seed .= 'cat:' . (int) get_queried_object_id();
   } else {
-    // 非メインクエリ用（category_name / cat）
     $key_seed .= 'q:' . serialize([
       'category_name' => (string) $q->get('category_name'),
       'cat'           => (int) $q->get('cat'),
     ]);
   }
 
-  $cache_key = 'calma_sorted_ids_v3_' . md5($key_seed);
+  $cache_key = 'calma_sorted_ids_v4_' . md5($key_seed);
   $cached = get_transient($cache_key);
   if ($cached !== false) return $cached;
 
@@ -682,7 +684,7 @@ function calma_get_sorted_ids_for_query($q) {
         [
           'taxonomy' => $term->taxonomy,
           'field'    => 'term_id',
-          'terms'    => [$term->term_id],
+          'terms'    => [(int) $term->term_id],
         ]
       ];
     }
@@ -698,9 +700,6 @@ function calma_get_sorted_ids_for_query($q) {
 
     if ($cat_name !== '') $args['category_name'] = $cat_name;
     if ($cat_id) $args['cat'] = $cat_id;
-
-    // もしトップが「商品だけ」なら、ここで item も付け足したい場合：
-    // $args['category_name'] = $args['category_name'] ? ($args['category_name'] . ',item') : 'item';
   }
 
   $ids = get_posts($args);
@@ -735,13 +734,13 @@ function calma_get_sorted_ids_for_query($q) {
 
 /**
  * メインクエリ（カテゴリ/ブランド）のソート
+ * 対象：item配下カテゴリ / brand
  */
 add_action('pre_get_posts', function($q) {
 
   if (is_admin()) return;
   if (! $q->is_main_query()) return;
 
-  // 対象：item配下カテゴリ OR brand
   if (!calma_query_is_item_tree($q) && ! $q->is_tax('brand')) return;
 
   if (!function_exists('usces_the_item') || !function_exists('usces_have_skus') || !function_exists('usces_have_zaiko')) return;
@@ -758,16 +757,13 @@ add_action('pre_get_posts', function($q) {
 
 /**
  * トップページの「非メインクエリ」（ウィジェット等）にも適用
- * ※ここが今回のキモ：トップの10件が戻ったのは main_query 限定だったから
+ * ※ここは “並び替え” のみ。除外はウィジェット側(item-list.php)でやる。
  */
 add_action('pre_get_posts', function($q) {
 
   if (is_admin()) return;
-
-  // トップだけに限定（不要なら外してOK）
   if (! (is_front_page() || is_home())) return;
 
-  // item配下を対象
   if (! calma_query_is_item_tree($q)) return;
 
   if (!function_exists('usces_the_item') || !function_exists('usces_have_skus') || !function_exists('usces_have_zaiko')) return;
@@ -783,18 +779,7 @@ add_action('pre_get_posts', function($q) {
 
 
 /**
- * 商品更新時にキャッシュを早めに切り替えたい場合（任意）
- * すぐ反映が必要なら有効化
- */
-add_action('save_post', function($post_id){
-  if (wp_is_post_revision($post_id)) return;
-  // 個別キー方式なので、期限(10分)運用でもOK。即時反映したいなら別途一括削除の仕組みに。
-}, 10);
-
-
-/**
- * ウィジェット用：指定条件の投稿IDを
- * 在庫あり→売切、各グループ内 更新日DESC で並べたID配列を返す
+ * ウィジェット用：指定条件の投稿IDを並べ替えて返す（除外は呼び出し側でtax_queryに追加する）
  */
 function calma_get_sorted_ids_from_args($base_args) {
 
@@ -802,7 +787,6 @@ function calma_get_sorted_ids_from_args($base_args) {
     return [];
   }
 
-  // posts_per_page は全件取得に差し替え（IDだけ欲しい）
   $args = $base_args;
   $args['posts_per_page'] = -1;
   $args['fields']         = 'ids';
@@ -810,7 +794,7 @@ function calma_get_sorted_ids_from_args($base_args) {
   $args['order']          = 'DESC';
   $args['no_found_rows']  = true;
 
-  $cache_key = 'calma_widget_sorted_' . md5(home_url() . '|' . serialize($args));
+  $cache_key = 'calma_widget_sorted_v2_' . md5(home_url() . '|' . serialize($args));
   $cached = get_transient($cache_key);
   if ($cached !== false) return $cached;
 
@@ -829,10 +813,8 @@ function calma_get_sorted_ids_from_args($base_args) {
     $ai = $avail[$a] ?? 0;
     $bi = $avail[$b] ?? 0;
 
-    // 在庫あり優先
     if ($ai !== $bi) return $bi <=> $ai;
 
-    // 同グループ内：更新日DESC
     $am = get_post_modified_time('U', true, $a);
     $bm = get_post_modified_time('U', true, $b);
     return $bm <=> $am;
@@ -841,3 +823,21 @@ function calma_get_sorted_ids_from_args($base_args) {
   set_transient($cache_key, $ids, 5 * MINUTE_IN_SECONDS);
   return $ids;
 }
+
+
+/**
+ * 商品情報更新時にキャッシュ削除（calma_ 系 transient を削除）
+ */
+add_action('save_post', function($post_id){
+
+  if (wp_is_post_revision($post_id)) return;
+
+  global $wpdb;
+
+  $wpdb->query("
+    DELETE FROM {$wpdb->options}
+    WHERE option_name LIKE '_transient_calma_%'
+       OR option_name LIKE '_transient_timeout_calma_%'
+  ");
+
+});

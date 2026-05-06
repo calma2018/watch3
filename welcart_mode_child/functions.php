@@ -50,9 +50,9 @@ function watch3_enqueue_tag_category_style() {
 	// 通常の投稿タグアーカイブ
 	if ( is_tag() ) {
 		wp_enqueue_style(
-			'watch3-tag-category-style', 
+			'watch3-tag-category-style',
 			get_template_directory_uri() . '/assets/css/category.css', // 親テーマのCSS
-			array( 'parent-style' ), 
+			array( 'parent-style' ),
 			'1.0'
 		);
 	}
@@ -237,11 +237,14 @@ function watch3_show_item_acf_spec( $post_id = null ) {
 	}
 
 	$item_ref       = get_post_meta( $post_id, 'item_ref', true );
-	$item_rank      = get_post_meta( $post_id, 'item_rank', true );
+	$item_rank      = get_post_meta( $post_id, 'rank', true );
+	$item_movement      = get_post_meta( $post_id, 'item_movement', true );
 	$item_dialcolor = get_post_meta( $post_id, 'item_dialcolor', true );
+	$item_material      = get_post_meta( $post_id, 'item_material', true );
 	$item_beltsize  = get_post_meta( $post_id, 'item_beltsize', true );
 	$item_accessory = get_post_meta( $post_id, 'item_accessory', true );
 	$item_accessory_other = get_post_meta( $post_id, 'item_accessory_other', true );
+	$item_other = get_post_meta( $post_id, 'item_other', true );
 
 	// 全項目が空なら何も表示しない
 	if (
@@ -255,11 +258,14 @@ function watch3_show_item_acf_spec( $post_id = null ) {
 	// テンプレートに渡す値
 	$args = array(
 		'item_ref'       => $item_ref,
-		'item_rank'      => $item_rank,
+		'rank'      => $item_rank,
+		'item_movement'      => $item_movement,
 		'item_dialcolor' => $item_dialcolor,
+		'item_material' => $item_material,
 		'item_beltsize'  => $item_beltsize,
 		'item_accessory' => $item_accessory,
 		'item_accessory_other' => $item_accessory_other,
+		'item_other' => $item_other,
 	);
 
 	// template-parts/item/acf_spec.php を呼び出す
@@ -387,15 +393,15 @@ function my_child_custom_product_info() {
 	// データがいずれか存在する場合のみHTMLを出力
 	if ( $brand_name || $item_ref || $item_dialcolor ) {
 		echo '<div class="p-itemCard_meta">';
-		
+
 		if ( $brand_name ) {
 			echo '<div class="p-itemCard_meta_brand">' . esc_html( $brand_name ) . '</div>';
 		}
-		
+
 		if ( $item_ref ) {
 			echo '<div class="p-itemCard_meta_ref">Ref. ' . esc_html( $item_ref ) . '</div>';
 		}
-		
+
 		if ( $item_dialcolor ) {
 			echo '<div class="p-itemCard_meta_dial">文字盤色 ' . esc_html( $item_dialcolor ) . '</div>';
 		}
@@ -531,7 +537,7 @@ function my_mode_get_produt_tag( $post_id = null ) {
       case 'itemreco':
         $flag['reco'] = 1;
         break;
-      
+
       // ▼ 追加カスタマイズ ▼
       case 'itemused':     // USED
         $flag['used'] = 1;
@@ -547,26 +553,26 @@ function my_mode_get_produt_tag( $post_id = null ) {
   }
 
   // 表示条件判定 (どれか一つでも該当すれば ul を出力)
-  if ( 
-      isset( $flag['new'] ) || 
-      isset( $flag['reco'] ) || 
+  if (
+      isset( $flag['new'] ) ||
+      isset( $flag['reco'] ) ||
       isset( $flag['used'] ) ||      // 追加
       isset( $flag['unused'] ) ||    // 追加
       isset( $flag['sale_cat'] ) ||  // 追加
-      usces_have_fewstock( $post_id ) || 
-      welcart_mode_has_campaign( $post_id ) 
+      usces_have_fewstock( $post_id ) ||
+      welcart_mode_has_campaign( $post_id )
   ) {
-    
+
     $html .= '<ul class="cf opt-tag">' . "\n";
-    
-    // 1. NEW
+
+    // 1. 新商品
     if ( isset( $flag['new'] ) ) {
       $html .= '<li class="opt-tag-icon new" data-icon="new">' . mode_get_options( 'display_newtag_text' ) . '</li>' . "\n";
     }
-    
-    // 2. おすすめ
+
+    // 2. 新品
     if ( isset( $flag['reco'] ) ) {
-      $html .= '<li class="opt-tag-icon recommend" data-icon="recommend">' . mode_get_options( 'display_hottag_text' ) . '</li>' . "\n";
+      $html .= '<li class="opt-tag-icon recommend" data-icon="recommend">新 品</li>' . "\n";
     }
 
     // ▼ 3. USED (追加) ▼
@@ -588,7 +594,7 @@ function my_mode_get_produt_tag( $post_id = null ) {
     if ( usces_have_fewstock( $post_id ) ) {
       $html .= '<li class="opt-tag-icon stock" data-icon="stock">' . $usces->zaiko_status[1] . '</li>' . "\n";
     }
-    
+
     // 7. キャンペーン (Welcart標準のSALE)
     if ( welcart_mode_has_campaign( $post_id ) ) {
       $saletag_text = mode_get_options( 'display_saletag_text' );
@@ -596,7 +602,7 @@ function my_mode_get_produt_tag( $post_id = null ) {
         $html .= '<li class="opt-tag-icon sale" data-icon="sale">' . $saletag_text . '</li>' . "\n";
       }
     }
-    
+
     $html .= '</ul>' . "\n";
   }
 
@@ -612,4 +618,258 @@ function my_mode_produt_tag( $post_id = null ) {
   if ( ! empty( $produt_tag ) ) {
     echo wp_kses_post( $produt_tag );
   }
+}
+
+
+// contact-modal動かす
+add_action( 'wp_enqueue_scripts', function () {
+  $dir = get_stylesheet_directory_uri();
+
+  wp_enqueue_style(
+    'child-contact-modal',
+    $dir . '/assets/css/contact-modal.css',
+    array(),
+    '1.0.0'
+  );
+
+  wp_enqueue_script(
+    'child-contact-modal',
+    $dir . '/assets/js/contact-modal.js',
+    array(),
+    '1.0.0',
+    true
+  );
+}, 20 );
+
+
+
+/**
+ * 商品保存時に
+ * ・ブランド名
+ * ・商品説明（本文）
+ * を Google / Instagram 連携設定へ自動反映
+ */
+add_action('save_post', 'auto_sync_welcart_feed_fields', 20, 3);
+function auto_sync_welcart_feed_fields($post_id, $post, $update) {
+
+    // 自動保存は除外
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    // 商品のみ対象
+    if ($post->post_type !== 'post') return;
+
+    // Welcart商品判定（SKUがあるもの）
+    if (!usces_is_item($post_id)) return;
+
+    /* ========================
+       ブランド取得（タクソノミー）
+    ======================== */
+
+    $brand_terms = wp_get_post_terms($post_id, 'brand');
+
+    if (!empty($brand_terms) && !is_wp_error($brand_terms)) {
+        $brand_name = $brand_terms[0]->name;
+    } else {
+        $brand_name = '';
+    }
+
+    /* ========================
+       商品本文取得
+    ======================== */
+
+    $description = $post->post_content;
+
+    // HTMLタグ除去（Google向け）
+    $description = wp_strip_all_tags($description);
+
+    /* ========================
+       Google Shopping用メタ
+    ======================== */
+
+    update_post_meta($post_id, '_google_brand', $brand_name);
+    update_post_meta($post_id, '_google_description', $description);
+
+    /* ========================
+       Instagram用メタ
+    ======================== */
+
+    update_post_meta($post_id, '_instagram_brand', $brand_name);
+    update_post_meta($post_id, '_instagram_description', $description);
+
+}
+
+
+/**
+ * 先頭SKUの通常価格(cprice)・売価(price)を取得
+ */
+function watch3_get_first_sku_prices( $post_id ) {
+	$cprice = 0;
+	$price  = 0;
+
+	if ( function_exists( 'usces_get_skus' ) ) {
+		$skus = usces_get_skus( $post_id );
+		if ( is_array( $skus ) && ! empty( $skus ) ) {
+			$first = reset( $skus );
+			if ( is_array( $first ) ) {
+				$cprice = isset( $first['cprice'] ) ? (int) $first['cprice'] : 0;
+				$price  = isset( $first['price'] ) ? (int) $first['price'] : 0;
+				return array(
+					'cprice' => $cprice,
+					'price'  => $price,
+				);
+			}
+		}
+	}
+
+	if ( function_exists( 'usces_get_item' ) ) {
+		$item = usces_get_item( $post_id );
+		if ( is_array( $item ) ) {
+			$skus = null;
+
+			if ( isset( $item['sku'] ) && is_array( $item['sku'] ) ) {
+				$skus = $item['sku'];
+			} elseif ( isset( $item['skus'] ) && is_array( $item['skus'] ) ) {
+				$skus = $item['skus'];
+			}
+
+			if ( is_array( $skus ) && ! empty( $skus ) ) {
+				$first = reset( $skus );
+				if ( is_array( $first ) ) {
+					$cprice = isset( $first['cprice'] ) ? (int) $first['cprice'] : 0;
+					$price  = isset( $first['price'] ) ? (int) $first['price'] : 0;
+				}
+			}
+		}
+	}
+
+	return array(
+		'cprice' => $cprice,
+		'price'  => $price,
+	);
+}
+
+/**
+ * 現金特価（売価の3%OFF）
+ * 小数点切り捨て
+ */
+function watch3_get_cash_price( $price ) {
+	$price = (int) $price;
+	if ( $price <= 0 ) {
+		return 0;
+	}
+	return (int) floor( $price * 0.97 );
+}
+
+/**
+ * 商品詳細ページ用 価格HTML
+ */
+function watch3_price_html_single( $post_id ) {
+	$prices      = watch3_get_first_sku_prices( $post_id );
+	$cprice      = (int) $prices['cprice'];
+	$price       = (int) $prices['price'];
+	$cash_price  = watch3_get_cash_price( $price );
+
+	if ( $price <= 0 ) {
+		return '';
+	}
+
+	$tax = '';
+	if ( function_exists( 'usces_guid_tax' ) ) {
+		ob_start();
+		usces_guid_tax();
+		$tax = trim( ob_get_clean() );
+	}
+
+	ob_start();
+	?>
+	<div class="c-priceBox c-priceBox--single">
+		<div class="c-priceBox__main">
+			<?php if ( $cprice > 0 && $cprice !== $price ) : ?>
+				<span class="c-priceBox__row c-priceBox__row--regular">
+					<span class="c-priceBox__label">[定価]</span>
+					<span class="c-priceBox__regular">¥<?php echo number_format( $cprice ); ?></span>
+				</span>
+			<?php endif; ?>
+
+			<span class="c-priceBox__row c-priceBox__row--sale">
+				<span class="c-priceBox__label">[売価]</span>
+				<span class="c-priceBox__sale">¥<?php echo number_format( $price ); ?></span>
+				<span class="c-priceBox__tax"><?php echo wp_kses_post( $tax ); ?></span>
+			</span>
+		</div>
+
+		<?php if ( $cash_price > 0 ) : ?>
+			<div class="c-priceBox__cash">
+				<span class="c-priceBox__cashLabel">現金特価</span>
+				<span class="c-priceBox__cashPrice">¥<?php echo number_format( $cash_price ); ?></span>
+				<span class="c-priceBox__cashTax"><?php echo wp_kses_post( $tax ); ?></span>
+			</div>
+		<?php endif; ?>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+
+/**
+ * 一覧・TOP用 価格HTML
+ */
+/**
+ * 一覧・TOP用 価格HTML
+ */
+function watch3_price_html_list( $post_id ) {
+
+	// 既存の一覧用価格取得を使う
+	if ( function_exists( 'calma_get_list_prices_html' ) ) {
+		list( $regular_html_raw, $sale_html_raw ) = calma_get_list_prices_html();
+	} else {
+		$regular_html_raw = '';
+		$sale_html_raw    = '';
+	}
+
+	// 価格文字列から数値だけ取り出す
+	$regular_price = 0;
+	$sale_price    = 0;
+
+	if ( $regular_html_raw !== '' ) {
+		$regular_price = (int) preg_replace( '/[^0-9]/', '', wp_strip_all_tags( $regular_html_raw ) );
+	}
+
+	if ( $sale_html_raw !== '' ) {
+		$sale_price = (int) preg_replace( '/[^0-9]/', '', wp_strip_all_tags( $sale_html_raw ) );
+	}
+
+	// 売価が取れないなら何も出さない
+	if ( $sale_price <= 0 ) {
+		return '';
+	}
+
+	$cash_price = watch3_get_cash_price( $sale_price );
+
+	ob_start();
+	?>
+	<div class="c-priceBox c-priceBox--list">
+		<?php if ( $regular_price > 0 && $regular_price !== $sale_price ) : ?>
+			<div class="c-priceBox__row c-priceBox__row--regular">
+				<span class="c-priceBox__label">[定価]</span>
+				<span class="c-priceBox__regular">¥<?php echo number_format( $regular_price ); ?></span>
+			</div>
+		<?php endif; ?>
+
+		<div class="c-priceBox__row c-priceBox__row--sale">
+			<span class="c-priceBox__label">[売価]</span>
+			<span class="c-priceBox__sale">¥<?php echo number_format( $sale_price ); ?></span>
+			<span class="c-priceBox__tax">(税込)</span>
+		</div>
+
+		<?php if ( $cash_price > 0 ) : ?>
+			<div class="c-priceBox__cash">
+				<span class="c-priceBox__cashOff">3%OFF</span>
+				<span class="c-priceBox__cashLabel">現金特価</span>
+				<span class="c-priceBox__cashPrice">¥<?php echo number_format( $cash_price ); ?></span>
+				<span class="c-priceBox__cashTax">(税込)</span>
+			</div>
+		<?php endif; ?>
+	</div>
+	<?php
+	return ob_get_clean();
 }

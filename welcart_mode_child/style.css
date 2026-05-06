@@ -5,3 +5,605 @@ Author: watch3
 Template: welcart_mode
 Version: 1.0
 */
+
+/* ===== Floating Add to Cart ===== */
+:root {
+  --floating-cart-h: 72px;
+  /* 高さ調整 */
+}
+
+/* コンテンツがバーに隠れないように */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(var(--floating-cart-h) + env(safe-area-inset-bottom));
+  }
+}
+
+.c-floatingCart {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.c-floatingCart.is-show {
+  transform: translateY(0);
+}
+
+.c-floatingCart__inner {
+  display: flex;
+  gap: 10px;
+}
+
+.c-floatingCart__btn {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.c-floatingCart__btn--cart {
+  background: #0d6796;
+  color: #fff;
+}
+
+.c-floatingCart__btn--contact {
+  background: linear-gradient(90deg, #8c7b58 0%, #6f6149 100%);
+  color: #fff;
+}
+
+/* iPhoneのホームバー対策 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .c-floatingCart {
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+}
+
+
+
+
+/* ========================================
+   一覧・TOP 商品カード 価格表示
+======================================== */
+.c-priceBox--list {
+  display: flex;
+  flex-direction: column;
+    justify-content: flex-start;
+}
+.c-priceBox__row--regular,
+.c-priceBox__row--sale {
+  min-height: 1.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.c-priceBox__regular,
+.c-priceBox__sale,
+.c-priceBox__tax {
+  display: inline-block;
+  line-height: 1.2;
+}
+.c-priceBox__cash {
+  min-height: 2.8rem;
+}
+
+.c-priceBox__cash--empty {
+  visibility: hidden;
+}
+
+
+.c-priceBox--list .c-priceBox__row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-wrap: wrap;
+  line-height: 1.2;
+}
+
+.c-priceBox--list .c-priceBox__label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.c-priceBox--list .c-priceBox__regular {
+  font-size: 0.8rem;
+  color: #8f8f8f;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.c-priceBox--list .c-priceBox__sale {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: red;
+  white-space: nowrap;
+}
+@media screen and (max-width:767px) {
+  .c-priceBox--list .c-priceBox__sale {
+      font-size: 1.2rem;
+    }
+}
+
+.c-priceBox--list .c-priceBox__tax {
+  font-size: 0.8rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* =========================
+   TOP　現金特価ブロック
+========================= */
+.c-priceBox--list .c-priceBox__cash {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  background: #f5ece8;
+  justify-content: start;
+}
+
+
+/* 現金特価ラベル */
+.c-priceBox--list .cashTitle_area {
+  max-width: 32%;
+  background-image: linear-gradient(to right, #847655, #554c37);
+  padding: 8px 4px;
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+
+.c-priceBox--list .cashPrice_area {
+  max-width: 66%;
+  padding: 2px 4px;
+  gap: 0px;
+  display: contents;
+  align-items: center;
+}
+
+.c-priceBox--list .c-priceBox__cashLabel {
+  font-weight: 700;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3%OFFバッジ */
+.c-priceBox--list .c-priceBox__cashOff {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* 金額 */
+.c-priceBox--list .c-priceBox__cashPrice {
+  font-size: clamp(1.2rem, calc(0.8vw + 1.1rem), 1.2rem);
+  font-weight: 800;
+  color: #ef5b14;
+  line-height: 1.2;
+}
+
+/* 税込 → 横並び */
+.c-priceBox--list .c-priceBox__cashTax {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #ef5b14;
+  text-align: right;
+  display: block;
+}
+
+/* 税込み崩れ対策（Welcart） */
+.c-priceBox--list .c-priceBox__cashTax *,
+.c-priceBox--list .c-priceBox__tax * {
+  font-size: inherit;
+  color: inherit;
+  white-space: nowrap;
+}
+
+/* ▶ */
+.c-priceBox--list .c-priceBox__cashArrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #554c37;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+/* 税込みを価格の横に */
+.c-priceBox--list .c-priceBox__cashPrice {
+  display: block;
+  align-items: baseline;
+  gap: 1px;
+}
+
+.c-priceBox--list .c-priceBox__cashTxt {
+  font-size: 0.55rem;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width:767px) {
+  .c-priceBox--list .c-priceBox__cash {
+    gap: 12px;
+  }
+  .c-priceBox--list .cashPrice_area {
+  padding: 2px 0px;
+}
+.c-priceBox--list .cashTitle_area {
+  text-align: center;
+  padding: 4px 8px;
+}
+.c-priceBox--list .c-priceBox__cashTxt {
+  font-size: 0.48rem;
+}
+}
+
+
+/* ========================================
+   商品詳細 価格表示
+======================================== */
+.c-priceBox--single {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 10px 0 20px;
+}
+
+.c-priceBox--single .c-priceBox__main {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.c-priceBox--single .c-priceBox__row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+  line-height: 1.2;
+}
+
+/* =========================
+   定価（1rem）
+========================= */
+.c-priceBox--single .c-priceBox__label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.c-priceBox--single .c-priceBox__regular {
+  font-size: 1rem;
+  color: #8f8f8f;
+  text-decoration: line-through;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* =========================
+   売価（2rem）
+========================= */
+.c-priceBox--single .c-priceBox__sale {
+  font-size: 2rem;
+  font-weight: 800;
+  color: red;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.c-priceBox--single .c-priceBox__tax {
+  font-size: 1rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* =========================
+   商品ページ　現金特価ブロック
+========================= */
+
+.c-priceBox--single .c-priceBox__cash {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 12px;
+  background: #f5ece8;
+  justify-content: space-between;
+}
+
+
+/* 現金特価ラベル */
+.cashTitle_area {
+  max-width: 30%;
+  background-image: linear-gradient(to right, #847655, #554c37);
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 1.0rem;
+    line-height: 1;
+}
+.cashPrice_area {
+  max-width: 70%;
+    padding: 8px 14px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+}
+.c-priceBox--single .c-priceBox__cashLabel {
+  font-weight: 700;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 3%OFFバッジ */
+.c-priceBox__cashOff {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+    font-weight: 700;
+}
+
+/* 金額（2.4rem） */
+.c-priceBox--single .c-priceBox__cashPrice {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ef5b14;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* 税込 → 横並び */
+.c-priceBox--single .c-priceBox__cashTax {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ef5b14;
+}
+
+/* 税込み崩れ対策（Welcart） */
+.c-priceBox--single .c-priceBox__cashTax *,
+.c-priceBox--single .c-priceBox__tax * {
+  font-size: inherit;
+  color: inherit;
+  white-space: nowrap;
+}
+
+/* ▶ */
+.c-priceBox--single .c-priceBox__cashArrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #554c37;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* 税込みを価格の横に */
+.c-priceBox--single .c-priceBox__cashPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.c-priceBox--single .c-priceBox__cashTxt {
+  font-size: 0.55rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* =========================
+   スマホ
+========================= */
+@media (max-width: 767px) {
+  .c-priceBox--single {
+    gap: 10px;
+  }
+
+  .c-priceBox--single .c-priceBox__sale {
+    font-size: 1.8rem;
+  }
+
+  .c-priceBox--single .c-priceBox__cashPrice {
+    font-size: 1.4rem;
+  }
+    .c-priceBox--single .c-priceBox__cash {
+      gap: 2px 12px;
+    }
+
+}
+
+/* ---------------------------------
+ * TOP・一覧 画像上 OFF率バッジ
+ * --------------------------------- */
+.list .img.square {
+  position: relative;
+  overflow: hidden;
+}
+
+.c-itemOffBadge--list {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  top: auto;
+  z-index: 3;
+  width: 96px;
+  height: 96px;
+  background: rgba(243, 90, 24, 0.9);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+  color: #fff;
+  pointer-events: none;
+}
+
+.c-itemOffBadge--list .c-itemOffBadge__top {
+  position: absolute;
+  right: 8px;
+  bottom: 40px;
+  left: auto;
+  top: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.c-itemOffBadge--list .c-itemOffBadge__num {
+  position: absolute;
+  right: 8px;
+  bottom: 18px;
+  left: auto;
+  top: auto;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.c-itemOffBadge--list .c-itemOffBadge__text {
+  position: absolute;
+  right: 10px;
+  bottom: 4px;
+  left: auto;
+  top: auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+@media screen and (max-width: 767px) {
+  .c-itemOffBadge--list {
+    width: 76px;
+    height: 76px;
+  }
+
+  .c-itemOffBadge--list .c-itemOffBadge__top {
+    right: 6px;
+    bottom: 32px;
+    font-size: 0.55rem;
+  }
+
+  .c-itemOffBadge--list .c-itemOffBadge__num {
+    right: 6px;
+    bottom: 14px;
+    font-size: 1.2rem;
+  }
+
+  .c-itemOffBadge--list .c-itemOffBadge__text {
+    right: 7px;
+    bottom: 3px;
+    font-size: 0.62rem;
+  }
+}
+
+/* ---------------------------------
+ * 商品詳細 画像上 OFF率バッジ
+ * --------------------------------- */
+.is-product .gallery .itemimg {
+  position: relative;
+}
+
+.c-itemOffBadge--corner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  top: auto;
+  z-index: 10;
+  width: 170px;
+  height: 170px;
+  background: rgba(243, 90, 24, 0.9);
+  clip-path: polygon(160% 0, 100% 110%, 0 120%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+  color: #fff;
+  pointer-events: none;
+}
+
+.c-itemOffBadge--corner .c-itemOffBadge__top {
+  position: absolute;
+  right: 3px;
+  bottom: 43px;
+  left: auto;
+  top: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.c-itemOffBadge--corner .c-itemOffBadge__num {
+  position: absolute;
+  right: 8px;
+  bottom: 22px;
+  left: auto;
+  top: auto;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.c-itemOffBadge--corner .c-itemOffBadge__text {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  left: auto;
+  top: auto;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+@media screen and (max-width: 767px) {
+  .c-itemOffBadge--corner {
+    width: 160px;
+    height: 200px;
+  }
+
+  .c-itemOffBadge--corner .c-itemOffBadge__top {
+    right: 8px;
+    bottom: 48px;
+    font-size: 0.65rem;
+  }
+
+  .c-itemOffBadge--corner .c-itemOffBadge__num {
+    right: 8px;
+    bottom: 20px;
+    font-size: 1.6rem;
+  }
+
+  .c-itemOffBadge--corner .c-itemOffBadge__text {
+    right: 10px;
+    bottom: 6px;
+    font-size: 0.7rem;
+  }
+}
+
+/* 商品名：常に3行分の高さを確保 */
+.product .info h2,
+.post.list .info h2,
+article.list .info h2 {
+  line-height: 1.5;
+  height: calc(1.5em * 3);
+  overflow: hidden;
+  display: block;
+}

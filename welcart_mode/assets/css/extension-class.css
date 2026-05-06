@@ -95,11 +95,11 @@
 	margin-top: 4px;
 }
 .column-grid .list .tax_inc_block {
-	font-size: 11px;	
+	font-size: 11px;
 }
 .column-grid .list .tax_inc_block em {
 	margin-right: 3px;
-	font-size: 11px;	
+	font-size: 11px;
 }
 
 
@@ -189,7 +189,7 @@
 }
 .not-thumbnail .list:first-child {
 	padding-top: 16px;
-	border-top: 1px dotted #ccc;	
+	border-top: 1px dotted #ccc;
 }
 .not-thumbnail .list .data {
 	margin: -2px 0 6px;
@@ -452,6 +452,9 @@
 		margin-top: 36px;
 	}
 
+
+
+
 	/* -------- .column-grid5 for Slider -------- */
 
 	.coordinates-column-slide.column-grid5 .list {
@@ -497,7 +500,7 @@
 	}
 	.layout-list-column2.not-thumbnail .list:first-child {
 		padding-top: 0;
-		border-top: none;	
+		border-top: none;
 	}
 
 	/* -------- .layout-grid -------- */
@@ -514,7 +517,7 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
-	
+
 	/* -------- .layout-grid-column2 -------- */
 
 	.layout-grid-column2 .list {
@@ -543,6 +546,72 @@
 	}
 
 }
+
+
+/**
+ * 900px以下で4カラム
+ */
+@media screen and (max-width: 900px) {
+
+	.column-grid5 .list {
+		width: calc(25% - 6.75px);
+		margin-right: 9px;
+	}
+
+	.column-grid5 .list:nth-child(5n) {
+		margin-right: 9px;
+	}
+
+	.column-grid5 .list:nth-child(4n) {
+		margin-right: 0;
+	}
+
+	.column-grid5 .list:nth-child(n+6) {
+		margin-top: 0;
+	}
+
+	.column-grid5 .list:nth-child(n+5) {
+		margin-top: 36px;
+	}
+
+}
+
+
+/**
+ * 767px以下で2カラム
+ */
+@media screen and (max-width: 767px) {
+
+	.column-grid5 .list {
+		width: calc(50% - 4.5px);
+		margin-right: 9px;
+	}
+
+	/* 4カラム用の指定をリセット */
+	.column-grid5 .list:nth-child(4n),
+	.column-grid5 .list:nth-child(5n) {
+		margin-right: 9px;
+	}
+
+	/* 2の倍数で右マージンなし */
+	.column-grid5 .list:nth-child(2n) {
+		margin-right: 0;
+	}
+
+	/* 余白リセット */
+	.column-grid5 .list:nth-child(n+5),
+	.column-grid5 .list:nth-child(n+6) {
+		margin-top: 0;
+	}
+
+	/* 3個目以降に上余白 */
+	.column-grid5 .list:nth-child(n+3) {
+		margin-top: 36px;
+	}
+
+}
+
+
 
 
 /**
@@ -582,7 +651,7 @@
 	.column-grid .list .price {
 		font-size: 13px;
 	}
-	
+
 	.column-grid6 .list:nth-child( even ) {
 		margin-right: 9px;
 	}
@@ -720,7 +789,7 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
-	
+
 	/* -------- .layout-grid-column2 -------- */
 
 	.layout-grid-column2 .list {

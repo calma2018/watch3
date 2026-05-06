@@ -51,12 +51,31 @@ if ( 'lp' === $cont_position ) {
 
 			<?php endif; ?>
 
+
+			<?php
+$item_cprice   = (int) usces_the_itemCprice( 'return' );
+$item_price    = (int) usces_the_itemPrice( 'return' );
+$item_off_rate = 0;
+
+if ( $item_cprice > 0 && $item_price > 0 && $item_cprice > $item_price ) {
+	$item_off_rate = floor( ( ( $item_cprice - $item_price ) / $item_cprice ) * 100 );
+}
+?>
 			<section class="is-product">
 
 				<div class="gallery">
 
 					<div id="itemimg" class="itemimg">
-						<div class="slider slider-for">
+
+	<?php if ( $item_off_rate > 0 ) : ?>
+		<div class="c-itemOffBadge c-itemOffBadge--corner">
+			<span class="c-itemOffBadge__top">定価より</span>
+			<span class="c-itemOffBadge__num"><?php echo esc_html( $item_off_rate ); ?>%</span>
+			<span class="c-itemOffBadge__text">OFF</span>
+		</div>
+	<?php endif; ?>
+
+	<div class="slider slider-for">
 							<div class="list">
 								<?php if ( wp_is_mobile() ) : ?>
 									<?php usces_the_itemImage( 0, 600, 600, $post ); ?>
@@ -161,17 +180,81 @@ if ( 'lp' === $cont_position ) {
 									<div class="frequency"><span class="field_frequency"><?php dlseller_frequency_name( $post->ID, 'amount' ); ?></span></div>
 								<?php endif; ?>
 
-								<div class="field_price">
+								<!-- <div class="field_price">
 									<?php if ( usces_the_itemCprice( 'return' ) > 0 ) : ?>
 										<span class="field_cprice"><?php usces_the_itemCpriceCr(); ?></span>
 									<?php endif; ?>
 									<?php usces_the_itemPriceCr(); ?><?php usces_guid_tax(); ?>
-								</div>
-								<?php usces_crform_the_itemPriceCr_taxincluded(); ?>
+								</div> -->
+								<!-- <div class="field_price">
+									<?php if ( usces_the_itemCprice( 'return' ) > 0 ) : ?>
+										<span class="field_cprice_wrap">
+											<span class="field_price_label">[定価]</span>
+											<span class="field_cprice"><?php usces_the_itemCpriceCr(); ?></span>
+										</span>
+									<?php endif; ?>
 
+									<span class="field_price_wrap">
+										<span class="field_price_label">[売価]</span>
+										<span class="field_price_main"><?php usces_the_itemPriceCr(); ?></span>
+										<?php usces_guid_tax(); ?>
+									</span>
+								</div>
+								<?php usces_crform_the_itemPriceCr_taxincluded(); ?> -->
+
+								<?php
+$item_cprice = (int) usces_the_itemCprice( 'return' );
+$item_price  = (int) usces_the_itemPrice( 'return' );
+$cash_price  = $item_price > 0 ? (int) floor( $item_price * 0.97 ) : 0;
+?>
+
+<?php if ( $item_price > 0 ) : ?>
+	<div class="c-priceBox c-priceBox--single">
+		<div class="c-priceBox__main">
+			<?php if ( $item_cprice > 0 && $item_cprice !== $item_price ) : ?>
+				<div class="c-priceBox__row c-priceBox__row--regular">
+					<span class="c-priceBox__label"></span>
+					<span class="c-priceBox__regular">¥<?php echo number_format( $item_cprice ); ?></span>
+				</div>
+			<?php endif; ?>
+
+			<div class="c-priceBox__row c-priceBox__row--sale">
+				<span class="c-priceBox__label"></span>
+				<span class="c-priceBox__sale">¥<?php echo number_format( $item_price ); ?></span>
+				<span class="c-priceBox__tax"><?php usces_guid_tax(); ?></span>
+			</div>
+		</div>
+
+		<?php if ( $cash_price > 0 ) : ?>
+			<div class="c-priceBox__cash">
+				<div class="cashTitle_area">
+					<span class="c-priceBox__cashLabel">現金<br>特価</span>
+					<!-- <span class="c-priceBox__cashOff">3%<br>OFF</span> -->
+				</div>
+				<div class="cashPrice_area">
+					<!-- <span class="c-priceBox__cashArrow"></span> -->
+					<div class="cashPrice_block">
+						<span class="c-priceBox__cashPrice">
+							¥<?php echo number_format( $cash_price ); ?>
+							<span class="c-priceBox__cashTax"><?php usces_guid_tax(); ?></span>
+						</span>
+						<span class="c-priceBox__cashTxt">※銀行振込での現金払いに限り（割引上限10万円）</span>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>
+
+<?php usces_crform_the_itemPriceCr_taxincluded(); ?>
+
+
+
+								<!-- end price -->
 								<?php usces_the_itemGpExp(); ?>
 
-								<?php if ( ! usces_have_zaiko() ) : ?>
+									<!-- 追記 -->
+									<?php if ( ! usces_have_zaiko() ) : ?>
 
 									<?php if ( $display_inquiry && 'initial' === $inquiry_position ) : ?>
 										<div class="contact-item initial"><a href="<?php echo esc_url( welcart_mode_get_inquiry_link_url() ); ?>"><span class="welicon-contact"></span><?php mode_options( 'inquiry_text' ); ?></a></div>
@@ -183,7 +266,7 @@ if ( 'lp' === $cont_position ) {
 									<?php endif; ?>
 
 								<?php else : ?>
-
+									<!-- 追記ここまで -->
 									<div class="c-box">
 										<div class="quantity"><?php esc_html_e( 'Quantity', 'usces' ); ?><?php usces_the_itemQuant(); ?></div><span class="unit"><?php usces_the_itemSkuUnit(); ?></span>
 										<?php if ( $display_inquiry && 'always' === $inquiry_position ) : ?>
@@ -199,7 +282,7 @@ if ( 'lp' === $cont_position ) {
 								<!-- ★追加：お問い合わせブロックを表示 -->
 								<?php get_template_part( 'template-parts/item/contact' ); ?>
 								<!-- ★追加：ここまで -->
-									 
+
 								<div class="error_message"><?php usces_singleitem_error_message( $post->ID, usces_the_itemSku( 'return' ) ); ?></div>
 
 							</div>

@@ -7,25 +7,12 @@
  * @since 1.0.0
  */
 
-/**
- * Widget Regists
- */
 class mode_item_list extends WP_Widget {
 
-	/**
-	 * Construct
-	 */
 	function __construct() {
 		parent::__construct( false, $name = __( 'Welcart product list', 'welcart_mode' ) );
 	}
 
-	/**
-	 * Create Widget Object
-	 *
-	 * @param array  $args Array.
-	 * @param string $instance Instance.
-	 * @return void
-	 */
 	function widget( $args, $instance ) {
 		extract( $args );
 		global $usces;
@@ -38,7 +25,6 @@ class mode_item_list extends WP_Widget {
 
 		echo $before_widget;
 
-		// ---- Headline ----
 		if ( ! empty( $title_eng ) ) {
 			echo '<div class="entryhead title-small">';
 				echo '<div class="en">' . esc_html( $title_eng ) . '</div>';
@@ -54,49 +40,20 @@ class mode_item_list extends WP_Widget {
 			echo '</div>';
 		}
 
-		// ---- Query args (base) ----
+		// 一覧ページに合わせて、通常の新着順で取得
 		$item_args = array(
-			'post_type'      => 'post',
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'category',
-					'field'    => 'term_id',
-					'terms'    => $term_id,
-				),
-			),
-			'posts_per_page' => $number,
+			'post_type'           => 'post',
+			'post_status'         => 'publish',
+			'cat'                 => $term_id,
+			'posts_per_page'      => $number,
+			'orderby'             => 'date',
+			'order'               => 'DESC',
+			'ignore_sticky_posts' => true,
 		);
 
-		/**
-		 * ★ここが追加点（トップのNEW ARRIVALを並び替え）
-		 * 在庫あり→売切、各グループ内 更新日DESC で並べたID順に固定する
-		 */
-		if ( function_exists( 'calma_get_sorted_ids_from_args' ) ) {
-
-			// ソート済みの全IDを取得（内部で全件取得して並べ替える）
-			$sorted_ids = calma_get_sorted_ids_from_args( $item_args );
-
-			if ( ! empty( $sorted_ids ) ) {
-				$sorted_ids = array_slice( $sorted_ids, 0, $number );
-
-				$item_args['post__in'] = $sorted_ids;
-				$item_args['orderby']  = 'post__in';
-				$item_args['order']    = 'ASC';
-			}
-		} else {
-			// 関数がなければ、最低限更新日DESCだけ効かせる（保険）
-			$item_args['orderby'] = 'modified';
-			$item_args['order']   = 'DESC';
-		}
-
-		// ---- slider class ----
 		if ( true === mode_get_options( 'display_widget_slide' ) ) {
 			if ( true === mode_get_options( 'item_widget_slide_mobile' ) ) {
-				if ( wp_is_mobile() ) {
-					$addSlide = 'widget-item-column-slide';
-				} else {
-					$addSlide = 'widget-item-column';
-				}
+				$addSlide = wp_is_mobile() ? 'widget-item-column-slide' : 'widget-item-column';
 			} else {
 				$addSlide = 'widget-item-column-slide';
 			}
@@ -104,7 +61,6 @@ class mode_item_list extends WP_Widget {
 			$addSlide = 'widget-item-column';
 		}
 
-		// ---- Query ----
 		$item_query = new WP_Query( $item_args );
 
 		if ( $item_query->have_posts() ) {
@@ -113,7 +69,6 @@ class mode_item_list extends WP_Widget {
 			while ( $item_query->have_posts() ) {
 				$item_query->the_post();
 
-				// Welcart item context
 				if ( function_exists( 'usces_the_item' ) ) {
 					usces_the_item();
 				}
@@ -122,11 +77,9 @@ class mode_item_list extends WP_Widget {
 			}
 
 			echo '</div>' . "\n";
-
 			wp_reset_postdata();
 		}
 
-		// ---- Footer link ----
 		echo '<div class="entryfoot">
 				<div class="more">
 					<a title="' . esc_attr__( 'View list', 'welcart_mode' ) . '" href="' . esc_url( get_category_link( $term_id ) ) . '">
@@ -138,12 +91,6 @@ class mode_item_list extends WP_Widget {
 		echo $after_widget;
 	}
 
-	/**
-	 * Create Entry Fields
-	 *
-	 * @param string $instance Instance.
-	 * @return void
-	 */
 	function form( $instance ) {
 		$title        = empty( $instance['title'] ) ? '' : $instance['title'];
 		$title_eng    = empty( $instance['title-eng'] ) ? '' : $instance['title-eng'];
@@ -166,13 +113,13 @@ class mode_item_list extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'term_id' ); ?>"><?php _e( 'Product category to show:', 'welcart_mode' ); ?></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'term_id' ); ?>" name="<?php echo $this->get_field_name( 'term_id' ); ?>">
-				<option value="<?php echo esc_attr( usces_get_cat_id( 'item' ) ); ?>"
-					<?php selected( $term_id, usces_get_cat_id( 'item' ) ); ?>
-				><?php _e( 'Items', 'usces' ); ?></option>
+				<option value="<?php echo esc_attr( usces_get_cat_id( 'item' ) ); ?>" <?php selected( $term_id, usces_get_cat_id( 'item' ) ); ?>>
+					<?php _e( 'Items', 'usces' ); ?>
+				</option>
 				<?php foreach ( $target_terms as $term ) : ?>
-				<option value="<?php echo esc_attr( $term->term_id ); ?>"
-					<?php selected( $term_id, $term->term_id ); ?>
-				><?php echo esc_html( $term->name ); ?></option>
+					<option value="<?php echo esc_attr( $term->term_id ); ?>" <?php selected( $term_id, $term->term_id ); ?>>
+						<?php echo esc_html( $term->name ); ?>
+					</option>
 				<?php endforeach; ?>
 			</select>
 		</p>
@@ -187,13 +134,6 @@ class mode_item_list extends WP_Widget {
 		<?php
 	}
 
-	/**
-	 * Saves Entry Fields
-	 *
-	 * @param string $new_instance New Instance.
-	 * @param string $old_instance Old Instance.
-	 * @return string
-	 */
 	function update( $new_instance, $old_instance ) {
 		$instance              = $old_instance;
 		$instance['title']     = strip_tags( $new_instance['title'] );

@@ -20,23 +20,6 @@
 <?php endif; ?>
 <!-- ★追加：ここまで -->
 
-<!-- ★追加: Google翻訳 -->
-<div class="p-translateFixed">
-<div id="google_translate_element"></div>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja', // 元のページの言語コード
-    includedLanguages: 'ja,en,ko,zh-CN,zh-TW', // 表示する言語をカンマ区切りで指定（空欄なら全言語）
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</div>
-<!-- ★追加：ここまで -->
-
-
 					</div><!-- #content -->
 
 					<?php
@@ -80,7 +63,7 @@ function googleTranslateElementInit() {
 						} elseif ( is_page( 'brand' ) ) {
 							$line_url = 'https://form.lmes.jp/landing-qr/2008493659-RGkPB6ZP?uLand=2PuILT'; // brand用
 						} else {
-							$line_url = 'https://form.lmes.jp/landing-qr/2008493659-RGkPB6ZP?uLand=AVWf2v'; // その他ページ用 
+							$line_url = 'https://form.lmes.jp/landing-qr/2008493659-RGkPB6ZP?uLand=AVWf2v'; // その他ページ用
 						}
 						?>
 
@@ -118,6 +101,24 @@ function googleTranslateElementInit() {
 		</div><!-- #site -->
 
 		<?php wp_footer(); ?>
+
+				<!-- ★追加: Google翻訳 -->
+<div class="p-translateFixed">
+  <div id="google_translate_element"></div>
+</div>
+
+<script>
+window.googleTranslateElementInit = function () {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: 'ja,en,ko,zh-CN,zh-TW',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+};
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- ★追加：ここまで -->
 
 	</body>
 </html>

@@ -152,6 +152,11 @@
 
 .is-product .add-to-cart .zaikostatus {
 	font-size: 11px;
+	color: #fff;
+	padding: 4px 8px;
+	background-color: #2f3f50;
+	border-radius: 8px;
+	display: inline-block;
 }
 
 .is-product .add-to-cart .zaikostatus > .field_price {
@@ -234,7 +239,7 @@
 	border-radius: 4px;
 	background: #777;
 	color: #fff;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 46px;
 }
 
@@ -5009,4 +5014,3 @@ table#delivery_table tr td.delivery-address-book a.new-delivery-address-button {
 		font-size: 184.6%;
 	}
 }
-
